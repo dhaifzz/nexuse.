@@ -199,31 +199,19 @@ li {
        display: flex;
        align-items: center;
        background-color: white;
-       padding: 15px;
-       border: solid 0.5px #D9D9D9;
+       padding: 25px;
+       border: solid 0.5px;
+       border-color: #D9D9D9;
        border-radius: 5px;
-       max-width: 1300px; /* Adjust this value to control the maximum width */
+       max-width: 1180px; /* Adjust this value to control the maximum width */
        width: 100%; /* Optional: Set width to 100% to make it responsive within its container */
        height: auto;
-       margin: 20px 0 0;
-   }
-   .table {
-       border: solid 0.5px #D9D9D9;
-       border-radius: 5px;
-       border-collapse: separate;
-   }
-   .table td, .table th{
-       border: solid 0.5px #D9D9D9;
-       border-radius: 5px;
-   }
-   .table th{
-       background:#b71c1c;
-       color: white;
+       margin: 20px 0px 5px;
    }
    
    .profile-image {
-       width: 80px;
-       height: 80px;
+       width: 110px;
+       height: 110px;
        border-radius: 50%;
        object-fit: cover;
        margin-right: 15px;
@@ -235,14 +223,14 @@ li {
    }
    
    .profile-name {
-       font-size: 1.75rem;
+       font-size: 2.25rem;
        font-weight: bold;
        color: #333;
        margin: 0;
    }
    
    .profile-class {
-       font-size: 1rem;
+       font-size: 1.1rem;
        color: #A10808;
    }
    .subject-container {
@@ -290,36 +278,31 @@ li {
        color: #333;
        font-size: 1.35rem;
    }
+   
    .subject-name {
        color: #333;
        font-size: 1.35rem;
        margin-right: 8px;
        flex-grow: 1; /* Allow .subject-name to take available space */
    }
-   .edit-button{
-    margin-right: 2px;
-   }
-   .delete-button{
-    margin-left: 2px;
-   }
-   .edit-button, .delete-button {
+   
+   .letter-button {
        color: #b71c1c;
        border: solid 2px #b71c1c;
-       border-radius: 7px;
-       padding: 2px 8px;
-       background-color: white;
+       border-radius: 8px;
+       padding: 10px 12px;
        overflow: hidden;
-       z-index: 1;
-       font-size: 1rem;
+       font-size: 1.25rem;
        cursor: pointer;
        transition: background-color 0.3s;
        position: relative;
+       z-index: 1;
    }
    
-   .edit-button:hover, .delete-button:hover {
-       color: rgb(255, 255, 255);
+   .letter-button:hover {
+       color: white;
    }
-   .edit-button:before, .delete-button:before{
+   .letter-button:before{
     transition: 0.3s all ease;
     position: absolute;
     top: 0;
@@ -330,12 +313,12 @@ li {
     content: "";
     background-color: #b71c1c;
    }
-   .edit-button:hover:before, .delete-button:hover:before{
+   .letter-button:hover:before{
     transition: 0.3s all ease;
     left: 0;
     right: 0;
     opacity: 1;
-    z-index: -3;
+    z-index: -1;
    }
    .subject-area .fa-caret-right{
        font-size: 1.75rem;
@@ -344,39 +327,68 @@ li {
    .user-p-cont{
        align-items: center;
        display: flex;
-       min-width: auto;
        flex-direction: column;
        padding-top: 90px;
    }
-   .modal-header {
+   .pending-badge {
+       display: flex;
+       font-size: 18px;
+       padding-left: 25px;
+       align-items: center; /* Align icon and text vertically */
+       gap: 5px; 
+       font-size: 1rem; /* Adjust size as needed */
+       color: #b71c1c; /* Customize the color */
+   }
+   
+   .pending-badge i {
+       font-size: 1.5em; /* Adjust the size of the icon */
+   }
+   .pending-count{
+       color: #b71c1c;
+       font-size: 1.25rem;
+       padding: 3px; 
+   }
+    /* ARROW-RIGHT AND PENDING ICONS */
+    .arrow-black { color: black; }
+    .arrow-red { color: red; }
+ 
+    .pending-black { color: rgb(109, 93, 93)}
+    .pending-red { color: rgb(183, 0, 0)}
+
+   /* .modal-header {
        background-color: #A10808;
        color: white;
    }
    .modal-dialog{
        display: flex;
+       position: relative;
        align-items: center;
        justify-content: center;
-       height: 90vh;
-
+       height: 100vh;
+       margin: auto;
+   } */
+   textarea{
+    resize: none;
    }
-   /* Customize form inside the modal */
+   /* Customize form inside the modal
    #excuseLetterModal .form-label {
        font-weight: bold;
        font-size: 1rem;
    }
    #excuseLetterModal .form-control{
-       margin-bottom: 30px;
+       margin-bottom: 20px;
    }
-   #excuseLetterModal .btn-danger, #deleteModal .btn-danger{
+   #excuseLetterModal .btn-danger {
        background-color: #C91212;
-       padding: 7px 15px;
+       padding: 10px 15px;
        font-size: 1rem;
        border: none;
        transition: background-color 0.3s;
    }
-   #excuseLetterModal .btn-danger:hover, #deleteModal .btn-danger:hover  {
+   #excuseLetterModal .btn-danger:hover {
        background-color: #A10808;
-   }
+   } */
+
    .scrollable-dropdown {
     max-height: 150px; /* Limit height to enable scrolling */
     overflow-y: auto; /* Enable vertical scrolling */
@@ -406,6 +418,8 @@ li {
     scrollbar-color: #8a1e1e #f1f1f1; /* Thumb color and track color */
     scrollbar-width: thin; 
 }
+
+
    .fa-circle-xmark {
        font-size: 1.5rem; 
        color: white;
@@ -419,27 +433,6 @@ li {
        color: #FF2400;
        background: none;
    }
-   tr, td{
-    font-size: 1.15rem;
-    max-width: 300px;
-   }
-   #deletePhoto {
-    border: 2px solid #8a1e1e;
-   }
-   .modal-body p{
-    font-weight: bold;
-    color: #A10808;
-    font-size: 1.15rem;
+   #course option:disabled {
     text-align: center;
-   }
-   .modal-body ul{
-    align-items: center;
-    display: row;
-    justify-content: center;
-   }
-   .decision-btn{
-    justify-self: center;
-    margin: 5px;
-    align-items: center;
-    display:flex;
    }

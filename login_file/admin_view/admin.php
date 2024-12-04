@@ -25,7 +25,7 @@ if (!isset($_SESSION['user'])) {
     <script src="https://kit.fontawesome.com/3c9d5fece1.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="hp.css">
+    <link rel="stylesheet" href="adminStyle.css">
    
 </head>
 
@@ -41,15 +41,21 @@ if (!isset($_SESSION['user'])) {
         </div>
         <ul class="sidebar-icons">
     <li>
-        <a href="#">
-            <i class="fa-solid fa-house-chimney-user"></i>
-            <span class="nav-item">Home</span>
+        <a href="../admin_view/admin.php">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span class="nav-item">Dashboard</span>
         </a>
     </li>
     <li>
-        <a href="../student_view/submissions.php">
-            <i class="fa-solid fa-inbox"></i>
-            <span class="nav-item">Submissions</span>
+        <a href="../admin_view/admin.php">
+            <i class="fa-solid fa-users"></i>
+            <span class="nav-item">Accounts</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="nav-item">Subjects</span>
         </a>
     </li>
     <li>
@@ -71,7 +77,7 @@ if (!isset($_SESSION['user'])) {
     <div class="main">
        <nav class="navbar">
         <div class="navbar-brand">
-            <a href="#" class="site-title">Home Page.</a>
+            <a href="#" class="site-title">Admin Page.</a>
         </div>
         <div class="navbar-icons">
           <img src="/nexuse/images/pacman.jpg" alt="Profile Icon" class="icon-image">
@@ -79,7 +85,7 @@ if (!isset($_SESSION['user'])) {
     </nav>
 
      <!-- MAIN/LAMAN NG CONTAINER -->
-     <div class="user-p-cont"> 
+     <!-- <div class="user-p-cont"> 
               <div class="user-profile">
     <img src="/nexuse/images/pacman.jpg" alt="User Image" class="profile-image">
     <div class="profile-info">
@@ -126,7 +132,7 @@ if (!isset($_SESSION['user'])) {
 </div>
            </div>
         </div>
-    </div>
+    </div> -->
  <!-- Excuse Letter -->
  <div class="modal fade" id="excuseLetterModal" tabindex="-1" aria-labelledby="excuseLetterModalLabel">
     <div class="modal-dialog">

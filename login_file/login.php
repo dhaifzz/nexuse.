@@ -12,12 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST['password'];
 
         if ($email == 'dap@wmsu.com' && $password == '123456') {
-            $_SESSION['user'] = 'student'; // Set session variable for logged-in user
-            header("Location: student_view/homePage.php"); // Redirect to student homepage
+            $_SESSION['user'] = 'student'; // Set session variable for STUDENTS
+            header("Location: student_view/homePage.php");
             exit();
         } else if ($email == 'faculty@wmsu.com' && $password == '123456') {
-            $_SESSION['user'] = 'faculty'; // Set session variable for faculty
+            $_SESSION['user'] = 'faculty'; // Set session variable for GUIDANCE/ADVISER
             header("Location: faculty_view/faculty.php"); 
+            exit();
+        } else if ($email == 'prof@wmsu.com' && $password == '123456') {
+            $_SESSION['user'] = 'prof'; // Set session variable for PROFESSORS
+            header("Location: professors_view/professors.php"); 
+            exit();
+        } else if ($email == 'admin@wmsu.com' && $password == '123456') {
+            $_SESSION['user'] = 'admin'; // Set session variable for ADMIN
+            header("Location: admin_view/admin.php"); 
             exit();
         } else {
             $_SESSION['error_message'] = "Login failed. Invalid email or password.";

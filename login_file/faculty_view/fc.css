@@ -261,11 +261,11 @@ li {
        background-color: #f1f0f0;
    }
    
-   .subject-name {
+   .year-level {
        color: #333;
        font-size: 1.35rem;
        margin-right: 8px;
-       flex-grow: 1; /* Allow .subject-name to take available space */
+       flex-grow: 1; /* Allow .year-level to take available space */
    }
    
    .view-button {

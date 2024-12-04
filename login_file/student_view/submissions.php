@@ -13,15 +13,15 @@ $data = [
         'name' => 'Manny Pacquiao',
         'date_absent' => '2024-11-20',
         'date_submission' => '2024-11-25',
-        'comment' => 'Missed due to illness',
-        'photo' => 'photo1.jpg' // Assuming photos are stored in the 'images' folder
+        'remarks' => 'Missed due to illness',
+        'photo' => 'photo1.jpg' // Assuming photos ay stored in the 'images' folder
     ],
     [
         'course_year' => 'BSIT-3',
         'name' => 'Jane Doe',
         'date_absent' => '2024-11-18',
         'date_submission' => '2024-11-23',
-        'comment' => 'Family emergency',
+        'remarks' => 'Family emergency',
         'photo' => 'photo2.jpg'
     ]
 ];
@@ -53,7 +53,7 @@ $data = [
      <div class="sidebar">
         <div class="top">
             <div class="logo">
-                <img src="/excuse-site/images/Nexuse.svg" class="cat">
+                <img src="/nexuse/images/Nexuse.svg" class="cat">
                 <span class="text-cat">Nexuse.</span>
             </div>
             <i class="fa-solid fa-bars" id="sbtn"></i>
@@ -69,12 +69,6 @@ $data = [
         <a href="../student_view/submissions.php">
             <i class="fa-solid fa-inbox"></i>
             <span class="nav-item">Submissions</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fa-solid fa-book"></i>
-            <span class="nav-item">Course</span>
         </a>
     </li>
     <li>
@@ -98,221 +92,309 @@ $data = [
             <a href="#" class="site-title">Submissions</a>
         </div>
         <div class="navbar-icons">
-          <img src="/excuse-site/images/pacman.jpg" alt="Profile Icon" class="icon-image">
+          <img src="/nexuse/images/pacman.jpg" alt="Profile Icon" class="icon-image">
         </div>
 </nav>
 <div class="user-p-cont"> 
               <div class="user-profile">
-    <img src="/excuse-site/images/pacman.jpg" alt="User Image" class="profile-image">
+    <img src="/nexuse/images/pacman.jpg" alt="User Image" class="profile-image">
     <div class="profile-info">
         <h4 class="profile-name">Manny Pacquiao</h4>
-        <span class="profile-class">CS Student</span>
+        <span class="profile-class">Student</span>
     </div>
   </div>
+
 <div class="container mt-4">
-        <table class="table table-bordered">
+    <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Subject</th> 
                     <th>Course and Year Level</th>
                     <th>Date of Absent</th>
                     <th>Date of Submission</th>
-                    <th>Comment</th>
+                    <th>Remarks</th>
                     <th>Photo</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-               <?php
-                  $submissions = [
-                      [
-                          'subject' => 'MAD',
-                          'course' => 'BSCS-2',
-                          'date_absent' => '2024-11-20',
-                          'date_submission' => '2024-11-21',
-                          'comment' => 'Was unwell.',
-                          'photo' => 'lebron.jpg'
-                      ],
-                      [
-                          'subject' => 'CC104',
-                          'course' => 'BSIT-2',
-                          'date_absent' => '2024-11-19',
-                          'date_submission' => '2024-11-20',
-                          'comment' => 'Family emergency.',
-                          'photo' => 'lebron.jpg'
-                      ]
-                  ];
-              
-                  foreach ($submissions as $submission) {
-                       echo "<tr>
-                           <td>{$submission['subject']}</td>
-                           <td>{$submission['course']}</td>
-                           <td>{$submission['date_absent']}</td>
-                           <td>{$submission['date_submission']}</td>
-                           <td>{$submission['comment']}</td>
-                           <td>
-                               <img src='{$submission['photo']}' alt='Photo' class='img-thumbnail' style='width:50px;'>
-                           </td>
-                           <td>
-                               <button class='edit-button' 
-                                       data-bs-toggle='modal' 
-                                       data-bs-target='#excuseLetterModal' 
-                                       data-course='{$submission['course']}' 
-                                       data-date-absent='{$submission['date_absent']}' 
-                                       data-comment='{$submission['comment']}'>
-                                   <i class='fa-regular fa-pen-to-square'></i>
-                               </button>
+            <?php
+               $submissions = [
+                   [
+                       'subject' => 'MAD',
+                       'course' => 'BSCS-2',
+                       'date_absent' => '11-20-2024',
+                       'date_submission' => '11-21-2024',
+                       'remarks' => 'Was unwell.',
+                       'photo' => '/nexuse/images/WMSU-PIC.png'
+                   ],
+                   [
+                       'subject' => 'CC104',
+                       'course' => 'BSIT-2',
+                       'date_absent' => '11-19-2024',
+                       'date_submission' => '11-20-2024',
+                       'remarks' => 'Family emergency.',
+                       'photo' => '/nexuse/images/lebron.jpg'
+                   ]
+               ];
+
+                 foreach ($submissions as $submission) {
+                     echo "<tr>
+                         <td style='font-weight: bold; color: #C70039;'>{$submission['subject']}</td>
+                         <td>{$submission['course']}</td>
+                         <td>{$submission['date_absent']}</td>
+                         <td>{$submission['date_submission']}</td>
+                         <td style='max-width: 300px;'>{$submission['remarks']}</td>
+
+                         <td>
+                             <img src='{$submission['photo']}'
+                                  alt='Photo'
+                                  class='img-thumbnail photo-thumbnail'
+                                  style='width:60px; cursor:pointer;'
+                                  data-bs-toggle='modal'
+                                  data-bs-target='#photoModal'
+                                  data-photo='{$submission['photo']}'>
+                         </td>
+                         <td>
+                            <div class='decision-btn'>
+                             <button class='edit-button' 
+                                     data-bs-toggle='modal' 
+                                     data-bs-target='#excuseLetterModal' 
+                                     data-course='{$submission['course']}' 
+                                     data-date-absent='{$submission['date_absent']}' 
+                                     data-remarks='{$submission['remarks']}'>
+                                 <i class='fa-regular fa-pen-to-square'></i>
+                             </button>
                              <button class='delete-button' 
                                      data-bs-toggle='modal' 
                                      data-bs-target='#deleteModal' 
                                      data-course='{$submission['course']}' 
                                      data-date-absent='{$submission['date_absent']}' 
-                                     data-comment='{$submission['comment']}'>
+                                     data-remarks='{$submission['remarks']}'>
                                  <i class='fa-regular fa-trash-can'></i>
-                              </button>
-                           </td>
-                       </tr>";
-                  }
-              ?>
+                             </button>
+                             </div>
+                         </td>
+                     </tr>";
+                 }
+                 ?>
             </tbody>
         </table>
+      </div> 
     </div>
   <!-- Edit Modal -->
-  <div class="modal fade" id="excuseLetterModal" tabindex="-1" aria-labelledby="excuseLetterModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="excuseLetterModalLabel">Edit Submission</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="editSubmissionForm">
-                        <div class="mb-3">
-                            <label for="editDateOfAbsent" class="form-label">Date of Absent:</label>
-                            <input type="date" class="form-control" id="editDateOfAbsent" name="date_of_absent" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editCourse" class="form-label">Course:</label>
-                            <select class="form-select" id="editCourse" name="course" required>
-                                <option value="" disabled selected>-- Select your course --</option>
-                                <option value="BSCS">BSCS-1</option>
-                                <option value="BSCS">BSCS-2</option>
-                                <option value="BSCS">BSCS-3</option>
-                                <option value="BSCS">BSCS-4</option>
-                                <option value="BSIT">BSIT-1</option>
-                                <option value="BSIT">BSIT-2</option>
-                                <option value="BSIT">BSIT-3</option>
-                                <option value="BSIT">BSIT-4</option>
-                                <option value="ACT">ACT-1</option>
-                                <option value="ACT">ACT-2</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editComment" class="form-label">Comment:</label>
-                            <textarea class="form-control" id="editComment" name="comment" rows="3"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger">Save Changes</button>
-                        </div>
-                    </form>
-                </div>
+  <div class="modal fade" id="excuseLetterModal" tabindex="-1" aria-labelledby="excuseLetterModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="excuseLetterModalLabel">Edit Submission ✎</h5>
+                <button type="button" class="fa-regular fa-circle-xmark" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editSubmissionForm">
+                    <!-- Course Select -->
+                    <div class="mb-3">
+                        <label for="editCourse" class="form-label">Course and Year Level:</label>
+                        <select class="form-select" id="editCourse" name="course" required>
+                            <option value="" disabled selected>- - Select - -</option>
+                            <option value="BSCS-1">BSCS-1</option>
+                            <option value="BSCS-2">BSCS-2</option>
+                            <option value="BSCS-3">BSCS-3</option>
+                            <option value="BSCS-4">BSCS-4</option>
+                            <option value="BSIT-1">BSIT-1</option>
+                            <option value="BSIT-2">BSIT-2</option>
+                            <option value="BSIT-3">BSIT-3</option>
+                            <option value="BSIT-4">BSIT-4</option>
+                            <option value="ACT-1">ACT-1</option>
+                            <option value="ACT-2">ACT-2</option>
+                        </select>
+                    </div>
+
+                    <!-- Date of Absence -->
+                    <div class="mb-3">
+                        <label for="editDateOfAbsent" class="form-label">Date of Absent:</label>
+                        <input type="date" class="form-control" id="editDateOfAbsent" name="date_of_absent" required>
+                    </div>
+
+                    <!-- Remarks Textarea -->
+                    <div class="mb-3">
+                        <label for="editRemarks" class="form-label">Remarks:</label>
+                        <textarea class="form-control" id="editRemarks" name="remarks" rows="3"></textarea>
+                    </div>
+                    
+                    <!-- Photo -->
+                    <div class="mb-3">
+                        <label for="editPhoto" class="form-label">Photo:</label>
+                        <small class="form-text text-muted">Upload a new photo to change (optional).</small>
+                        <input type="file" class="form-control" id="editPhoto" name="photo" accept="image/*">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Save Changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="photoModalLabel">Photo Preview</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="modalPhoto" src="" alt="Photo" class="img-fluid">
-                </div>
+<!-- Pop up yung pic -->
+<div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="photoModalLabel">Photo of a documents/proof</h5>
+                <button type="button" class="fa-regular fa-circle-xmark" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <img id="modalPhoto" src="" alt="Full Image" class="img-fluid w-100 h-100" style="object-fit: contain;">
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Optional Modal for Editing
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Record</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="editForm" action="edit.php" method="POST">
-                        <input type="hidden" name="id" id="editId">
-                           <div class="mb-3">
-                            <label for="editName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="editName" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editCourse" class="form-label">Course and Year Level</label>
-                            <input type="text" class="form-control" id="editCourse" name="course_year" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editComment" class="form-label">Comment</label>
-                            <textarea class="form-control" id="editComment" name="comment" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </form>
-                </div> 
+<!-- Delete modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion 🗑</h5>
+                <button type="button" class="fa-regular fa-circle-xmark" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this submission?</p>
+                <ul>
+                    <li><strong>Course and Year Level:</strong> <span id="deleteCourse"></span></li>
+                    <li><strong>Date of Absent:</strong> <span id="deleteDateAbsent"></span></li>
+                    <li><strong>Remarks:</strong> <span id="deleteRemarks"></span></li>
+                    <div class="text-center mt-3">
+                    <img id="deletePhoto" src="" alt="Photo Preview" class="img-thumbnail" style="max-width: 150px;">
+                    </div>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
             </div>
         </div>
-    </div> -->
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-7eRF5zK0PrC3F3aLBVsc4mMb8sv/1F9lH40G3WpCkMo9Um7jEEB5LU4rx4SkH7PR" crossorigin="anonymous"></script>
-    <script>
-       
-       //  function editRecord(id) {
-       //      // Populate the modal form with data (simulated for now)
-       //      document.getElementById('editId').value = id;
-       //      document.getElementById('editName').value = "Sample Name"; // Replace with dynamic data
-       //      document.getElementById('editCourse').value = "Sample Course"; // Replace with dynamic data
-       //      document.getElementById('editComment').value = "Sample Comment"; // Replace with dynamic data
 
-       //      // Show the modal
-       //      const editModal = new bootstrap.Modal(document.getElementById('editModal'));
-       //      editModal.show(); }
-        
-       document.querySelectorAll('.photo-thumbnail').forEach(photo => {
-            photo.addEventListener('click', function () {
-                const photoSrc = this.getAttribute('data-photo');
-                const modalPhoto = document.getElementById('modalPhoto');
-                modalPhoto.src = photoSrc;
-            });
-        });
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-     const btn = document.querySelector("#sbtn");
+     <script>
+    // sidebar burger button
+    const btn = document.querySelector("#sbtn");
      const sidebar = document.querySelector(".sidebar");
      btn.addEventListener("click", () => {
      sidebar.classList.toggle("active");
     });
+ 
+    // modal para sa edit submission (not working properly)
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = new bootstrap.Modal(document.getElementById('excuseLetterModal'));
 
-    document.querySelectorAll('.edit-button').forEach(button => {
+        const editButtons = document.querySelectorAll('.edit-button');
+
+        editButtons.forEach(button => {
             button.addEventListener('click', function () {
                 const course = this.getAttribute('data-course');
                 const dateAbsent = this.getAttribute('data-date-absent');
-                const comment = this.getAttribute('data-comment');
+                const remarks = this.getAttribute('data-remarks');
 
-                // Populate modal fields
                 document.getElementById('editCourse').value = course;
                 document.getElementById('editDateOfAbsent').value = dateAbsent;
-                document.getElementById('editComment').value = comment;
+                document.getElementById('editRemarks').value = remarks;
             });
         });
 
-        // Handle form submission (example, can be updated to send via AJAX)
-        document.getElementById('editSubmissionForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Submission saved!');
-            const modal = bootstrap.Modal.getInstance(document.getElementById('excuseLetterModal'));
+        const form = document.getElementById('editSubmissionForm');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get updated data from the form
+            const updatedCourse = document.getElementById('editCourse').value;
+            const updatedDateAbsent = document.getElementById('editDateOfAbsent').value;
+            const updatedRemarks = document.getElementById('editRemarks').value;
+            const updatedPhoto = document.getElementById('editPhoto').files[0]; // di ko na alam pag iupdate photo 
+
+            console.log('Updated Data:', {
+                course: updatedCourse,
+                date_absent: updatedDateAbsent,
+                comment: updatedRemarks ,
+
+            });
+
             modal.hide();
         });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const photoModal = document.getElementById('photoModal');
+        const modalPhoto = document.getElementById('modalPhoto');
+
+        // Add event listeners to all thumbnails
+        document.querySelectorAll('.photo-thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', function () {
+                const photoSrc = this.getAttribute('data-photo');
+                modalPhoto.setAttribute('src', photoSrc);
+            });
+        });
+    });
+
+    // delete confimation 
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        const deleteButtons = document.querySelectorAll('.delete-button');
+
+        const deleteCourseElement = document.getElementById('deleteCourse');
+        const deleteDateAbsentElement = document.getElementById('deleteDateAbsent');
+        const deleteRemarksElement = document.getElementById('deleteRemarks');
+        const deletePhotoElement = document.getElementById('deletePhoto');
+        const confirmDeleteButton = document.getElementById('confirmDelete');
+
+        let rowToDelete = null;
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const course = this.getAttribute('data-course');
+                const dateAbsent = this.getAttribute('data-date-absent');
+                const remarks = this.getAttribute('data-remarks');
+                
+                // Fetch the photo URL from the 'img' element in the same <tr>
+                const photo = this.closest('tr').querySelector('.photo-thumbnail').getAttribute('src');
+
+                // Populate the modal with the data
+                deleteCourseElement.textContent = course;
+                deleteDateAbsentElement.textContent = dateAbsent;
+                deleteRemarksElement.textContent = remarks;
+                deletePhotoElement.setAttribute('src', photo);
+
+                // Store the row for deletion
+                rowToDelete = this.closest('tr');
+            });
+        });
+
+        confirmDeleteButton.addEventListener('click', function () {
+            if (rowToDelete) {
+                // Remove the row from the table
+                rowToDelete.remove();
+
+                // Hide the modal
+                deleteModal.hide();
+
+                // Perform additional actions here (e.g., send a request to the server to delete from the database)
+                console.log('Deleted entry with details:', {
+                    course: deleteCourseElement.textContent,
+                    date_absent: deleteDateAbsentElement.textContent,
+                    remarks: deleteElement.textContent,
+                    photo: deletePhotoElement.getAttribute('src')
+                });
+            }
+        });
+    });
+
 
     </script>
 </body>

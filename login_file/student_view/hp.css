@@ -336,10 +336,17 @@
    }
    .modal-dialog{
        display: flex;
+       position: relative;
        align-items: center;
        justify-content: center;
-       height: 90vh;
-
+       height: 100vh;
+       margin: auto;
+   }
+   #excuseLetterModal .modal.fade.show {
+    padding-right: 0 !important;
+   }   
+   textarea{
+    resize: none;
    }
    /* Customize form inside the modal */
    #excuseLetterModal .form-label {
@@ -347,7 +354,7 @@
        font-size: 1rem;
    }
    #excuseLetterModal .form-control{
-       margin-bottom: 30px;
+       margin-bottom: 20px;
    }
    #excuseLetterModal .btn-danger {
        background-color: #C91212;
@@ -402,4 +409,7 @@
    .fa-circle-xmark:hover {
        color: #FF2400;
        background: none;
+   }
+   #course option:disabled {
+    text-align: center;
    }

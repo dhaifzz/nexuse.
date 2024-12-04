@@ -35,7 +35,7 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
 <div class="sidebar">
     <div class="top">
         <div class="logo">
-            <img src="/excuse-site/images/Nexuse.svg" class="cat">
+            <img src="/nexuse/images/Nexuse.svg" class="cat">
             <span class="text-cat">Nexuse.</span>
         </div>
         <i class="fa-solid fa-bars" id="sbtn"></i>
@@ -48,13 +48,7 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class="fa-solid fa-window-maximize"></i>
-                <span class="nav-item">Board</span>
-            </a>
-        </li>
-        <li>
-            <a href="../faculty_view/submission.php">
+            <a href="../faculty_view/subGuidance.php">
                 <i class="fa-solid fa-inbox"></i>
                 <span class="nav-item">Submissions</span>
             </a>
@@ -80,29 +74,29 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
             <a href="#" class="site-title">Year Levels.</a>
         </div>
         <div class="navbar-icons">
-            <img src="/excuse-site/images/lebron.jpg" alt="Profile Icon" class="icon-image">
+            <img src="/nexuse/images/lebron.jpg" alt="Profile Icon" class="icon-image">
         </div>
     </nav>
     <div class="user-p-cont">
-        <div class="subject-container">
+    <div class="subject-container">
         <a class="subject-title"><?php echo htmlspecialchars($subject); ?></a>
 
         <?php if ($subject === "Assistive Computer Tech") : ?>
             <!-- Display 1st and 2nd year only -->
             <div class="subject-area">
                 <i class="fa-solid fa-caret-right"></i>
-                <div class="subject-name">1st Year</div>
-                <button class="view-button" type="button" data-subject="UNO">View</button>
+                <div class="year-level">1st Year</div>
+                <button class="view-button" type="button" data-subject="<?php echo htmlspecialchars($subject); ?>" data-year="1st Year">View</button>
                 <span class="pending-badge">
                     <i class="fa-solid fa-clock-rotate-left" title="Pending"></i>
                     <span class="pending-count">0</span>
                 </span>
             </div>
 
-            <div class="subject-area">
+            <div class="subject-area">  
                 <i class="fa-solid fa-caret-right"></i>
-                <div class="subject-name">2nd Year</div>
-                <button class="view-button" type="button" data-subject="DOS">View</button>
+                <div class="year-level">2nd Year</div>
+                <button class="view-button" type="button" data-subject="<?php echo htmlspecialchars($subject); ?>" data-year="2nd Year">View</button>
                 <span class="pending-badge">
                     <i class="fa-solid fa-clock-rotate-left" title="Pending"></i>
                     <span class="pending-count">0</span>
@@ -112,8 +106,8 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
             <!-- Display all years -->
             <div class="subject-area">
                 <i class="fa-solid fa-caret-right"></i>
-                <div class="subject-name">1st Year</div>
-                <button class="view-button" type="button" data-subject="UNO">View</button>
+                <div class="year-level">1st Year</div>
+                <button class="view-button" type="button" data-subject="<?php echo htmlspecialchars($subject); ?>" data-year="1st Year">View</button>
                 <span class="pending-badge">
                     <i class="fa-solid fa-clock-rotate-left" title="Pending"></i>
                     <span class="pending-count">0</span>
@@ -122,8 +116,8 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
 
             <div class="subject-area">
                 <i class="fa-solid fa-caret-right"></i>
-                <div class="subject-name">2nd Year</div>
-                <button class="view-button" type="button" data-subject="DOS">View</button>
+                <div class="year-level">2nd Year</div>  
+                <button class="view-button" type="button" data-subject="<?php echo htmlspecialchars($subject); ?>" data-year="2nd Year">View</button>
                 <span class="pending-badge">
                     <i class="fa-solid fa-clock-rotate-left" title="Pending"></i>
                     <span class="pending-count">0</span>
@@ -132,8 +126,8 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
 
             <div class="subject-area">
                 <i class="fa-solid fa-caret-right"></i>
-                <div class="subject-name">3rd Year</div>
-                <button class="view-button" type="button" data-subject="TRES">View</button>
+                <div class="year-level">3rd Year</div>
+                <button class="view-button" type="button" data-subject="<?php echo htmlspecialchars($subject); ?>" data-year="3rd Year">View</button>
                 <span class="pending-badge">
                     <i class="fa-solid fa-clock-rotate-left" title="Pending"></i>
                     <span class="pending-count">0</span>
@@ -142,16 +136,16 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
 
             <div class="subject-area">
                 <i class="fa-solid fa-caret-right"></i>
-                <div class="subject-name">4th Year</div>
-                <button class="view-button" type="button" data-subject="KWATRO">View</button>
+                <div class="year-level">4th Year</div>
+                <button class="view-button" type="button" data-subject="<?php echo htmlspecialchars($subject); ?>" data-year="4th Year">View</button>
                 <span class="pending-badge">
                     <i class="fa-solid fa-clock-rotate-left" title="Pending"></i>
                     <span class="pending-count">0</span>
                 </span>
             </div>
         <?php endif; ?>
-        </div>
     </div>
+  </div>
 </div>
 
 
@@ -188,6 +182,19 @@ $subject = isset($_GET['subject']) ? $_GET['subject'] : 'N/A'; // Default to 'N/
             }
         });
     });
+    document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.view-button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const subject = this.getAttribute('data-subject');
+            const year = this.getAttribute('data-year');
+            // Redirect to yearTable.php with subject and year as query parameters
+            window.location.href = `yearTable.php?subject=${encodeURIComponent(subject)}&year=${encodeURIComponent(year)}`;
+        });
+    });
+});
+
 </script>
 </body>
 </html>

@@ -198,14 +198,14 @@ li {
    .user-profile {
        display: flex;
        align-items: center;
-       background-color: white;
+       background-color: #a31111;
        padding: 15px;
        border: solid 0.5px #D9D9D9;
        border-radius: 5px;
        max-width: 1300px; /* Adjust this value to control the maximum width */
        width: 100%; /* Optional: Set width to 100% to make it responsive within its container */
        height: auto;
-       margin: 20px 0 0;
+       margin: 30px 0 0;
    }
    .table {
        border: solid 0.5px #D9D9D9;
@@ -237,49 +237,21 @@ li {
    .profile-name {
        font-size: 1.75rem;
        font-weight: bold;
-       color: #333;
+       color: white;
        margin: 0;
    }
    
    .profile-class {
        font-size: 1rem;
-       color: #A10808;
-   }
-   .subject-container {
-       max-width: 1180px; /* Adjust to control container's max width */
-       width: 100%;
-       margin: 20px auto;
-       background-color: white;
-       padding: 20px;
-       border: solid 0.5px #D9D9D9;
-       border-radius: 5px;
-       display: flex;
-       flex-direction: column;  
-       align-items: center;  
-       justify-content: flex-start;  
-   }
-   
-   .subject-area {
-       display: flex;
-       align-items: center;
-       border: 1px solid lightgray;
-       max-width: 1100px; 
-       width: 100%;
-       background-color: #f5f5f5;
-       padding: 15px;
-       border-radius: 6px;
-       margin-bottom: 25px;
-       transition: background-color 0.3s;
+       color: #e4e3e3;
    }
    .subject-title {
        color: #A10808;
        font-weight: 600;
-       text-decoration: dashed;
-       font-size: 1.35rem;
-       text-align: center;
-       justify-content: center;
-       display: flex;
-       margin-bottom: 20px;
+       font-size: 2rem;
+       text-align: center; 
+       position: relative;
+       align-self: center;
    }
    .subject-area:hover {
        background-color: #eeeeee;
@@ -294,49 +266,33 @@ li {
        color: #333;
        font-size: 1.35rem;
        margin-right: 8px;
-       flex-grow: 1; /* Allow .subject-name to take available space */
+       flex-grow: 1;
    }
-   .edit-button{
-    margin-right: 2px;
+   .approvalArea{
+       justify-content: space-between;
    }
-   .delete-button{
-    margin-left: 2px;
+   .approved{
+       color: white;
+       background-color: #05ba62;
+       margin-top: 7px;
+       border: 2px solid #0a6d3d;
+       padding: 5px;
+       border-radius: 50px;
+       font-size: 0.75rem;
+       justify-content: center;
+       text-align: center;
    }
-   .edit-button, .delete-button {
-       color: #b71c1c;
-       border: solid 2px #b71c1c;
-       border-radius: 7px;
-       padding: 2px 8px;
-       background-color: white;
-       overflow: hidden;
-       z-index: 1;
-       font-size: 1rem;
-       cursor: pointer;
-       transition: background-color 0.3s;
-       position: relative;
-   }
-   
-   .edit-button:hover, .delete-button:hover {
-       color: rgb(255, 255, 255);
-   }
-   .edit-button:before, .delete-button:before{
-    transition: 0.3s all ease;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    right: 100%;
-    bottom: 0;
-    opacity: 0;
-    content: "";
-    background-color: #b71c1c;
-   }
-   .edit-button:hover:before, .delete-button:hover:before{
-    transition: 0.3s all ease;
-    left: 0;
-    right: 0;
-    opacity: 1;
-    z-index: -3;
-   }
+   /* .disapproved{
+    color: white;
+    background-color: #eb0909;
+    margin-top: 7px;
+    border: 2px solid #890e0e;
+    padding: 5px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    justify-content: center;
+    text-align: center;
+} */
    .subject-area .fa-caret-right{
        font-size: 1.75rem;
        margin-right: 10px;
@@ -346,7 +302,7 @@ li {
        display: flex;
        min-width: auto;
        flex-direction: column;
-       padding-top: 90px;
+       padding-top: 100px;
    }
    .modal-header {
        background-color: #A10808;
@@ -359,6 +315,15 @@ li {
        height: 90vh;
 
    }
+   .subject-title::after{
+       content: "";
+       position: absolute;
+       bottom: -2px; /* Adjust distance */
+       left: 25%; /* Center the smaller underline */
+       width: 50%; /* Adjust the width */
+       height: 3px; /* Thickness of the underline */
+       background-color: #ff1e00;
+      }
    /* Customize form inside the modal */
    #excuseLetterModal .form-label {
        font-weight: bold;
@@ -367,14 +332,14 @@ li {
    #excuseLetterModal .form-control{
        margin-bottom: 30px;
    }
-   #excuseLetterModal .btn-danger, #deleteModal .btn-danger{
+   .btn-danger{
        background-color: #C91212;
-       padding: 7px 15px;
+       padding: 7px 12px;
        font-size: 1rem;
        border: none;
        transition: background-color 0.3s;
    }
-   #excuseLetterModal .btn-danger:hover, #deleteModal .btn-danger:hover  {
+   .btn-danger:hover {
        background-color: #A10808;
    }
    .scrollable-dropdown {
@@ -406,6 +371,11 @@ li {
     scrollbar-color: #8a1e1e #f1f1f1; /* Thumb color and track color */
     scrollbar-width: thin; 
 }
+.scrollable-cell {
+    max-width: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
    .fa-circle-xmark {
        font-size: 1.5rem; 
        color: white;
@@ -421,25 +391,14 @@ li {
    }
    tr, td{
     font-size: 1.15rem;
-    max-width: 300px;
    }
-   #deletePhoto {
-    border: 2px solid #8a1e1e;
+   /* .filter-searching{
+    margin-top: 20px;
+   } */
+   td.names {
+    color: red;
    }
-   .modal-body p{
-    font-weight: bold;
-    color: #A10808;
-    font-size: 1.15rem;
-    text-align: center;
-   }
-   .modal-body ul{
-    align-items: center;
-    display: row;
-    justify-content: center;
-   }
-   .decision-btn{
-    justify-self: center;
-    margin: 5px;
-    align-items: center;
-    display:flex;
+   .table-bordered{
+       max-width: 1300px;
+       margin-top: 12px;
    }

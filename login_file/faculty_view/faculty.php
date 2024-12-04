@@ -32,7 +32,7 @@ if (!isset($_SESSION['user'])) {
 <div class="sidebar">
     <div class="top">
         <div class="logo">
-            <img src="/excuse-site/images/Nexuse.svg" class="cat">
+            <img src="/nexuse/images/Nexuse.svg" class="cat">
             <span class="text-cat">Nexuse.</span>
         </div>
         <i class="fa-solid fa-bars" id="sbtn"></i>
@@ -45,13 +45,7 @@ if (!isset($_SESSION['user'])) {
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class="fa-solid fa-window-maximize"></i>
-                <span class="nav-item">Board</span>
-            </a>
-        </li>
-        <li>
-            <a href="../faculty_view/submission.php">
+            <a href="../faculty_view/subGuidance.php">
                 <i class="fa-solid fa-inbox"></i>
                 <span class="nav-item">Submissions</span>
             </a>
@@ -77,20 +71,20 @@ if (!isset($_SESSION['user'])) {
             <a href="#" class="site-title">Home Page.</a>
         </div>
         <div class="navbar-icons">
-            <img src="/excuse-site/images/lebron.jpg" alt="Profile Icon" class="icon-image">
+            <img src="/nexuse/images/lebron.jpg" alt="Profile Icon" class="icon-image">
         </div>
     </nav>
     <div class="user-p-cont">
         <div class="user-profile">
-            <img src="/excuse-site/images/lebron.jpg" alt="User Image" class="profile-image">
+            <img src="/nexuse/images/lebron.jpg" alt="User Image" class="profile-image">
             <div class="profile-info">
                 <h4 class="profile-name">LeBron James</h4>
-                <span class="profile-class">Faculty</span>
+                <span class="profile-class">Guidance</span>
             </div>
         </div>
 
         <div class="subject-container">
-            <a class="subject-title">Classes</a>
+            <a class="subject-title">Programs</a>
 
             <div class="subject-area">
                 <i class="fa-solid fa-caret-right"></i>
@@ -138,6 +132,7 @@ if (!isset($_SESSION['user'])) {
         sidebar.classList.toggle("active");
     });
 
+    // click depende sa dept
     function navigateToClass(button) {
         const subject = button.getAttribute('data-subject');
         window.location.href = `faculty-classes.php?subject=${subject}`;
@@ -149,12 +144,12 @@ if (!isset($_SESSION['user'])) {
         buttons.forEach(button => {
             button.addEventListener('click', function() {
                 const subjectName = this.getAttribute('data-subject');
-                // Redirect to faculty-classes.php with the subject name as a query parameter
                 window.location.href = `faculty-classes.php?subject=${encodeURIComponent(subjectName)}`;
             });
         });
     });
 
+    // count ng pending
     document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.pending-count').forEach(function (pendingCountElement) {
         const pendingCount = parseInt(pendingCountElement.textContent);

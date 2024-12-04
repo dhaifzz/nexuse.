@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="/excuse-site/images/Nexuse-red.svg" alt="Nexuse Logo" class="cat">
+            <img src="/nexuse/images/Nexuse-red.svg" alt="Nexuse Logo" class="cat">
             <h1>Nexuse.</h1>
         </header>
 
