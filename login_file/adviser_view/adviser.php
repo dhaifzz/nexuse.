@@ -1,6 +1,6 @@
 <?php
 include '../fonts/google_fonts.php';
-include '../professors_view/approvalButtons.php';
+include '../adviser_view/approvalAdviser.php';
 session_start();
 
 $subject = isset($_GET['subject']) ? $_GET['subject'] : null;
@@ -12,9 +12,6 @@ if (!isset($_SESSION['user'])) {
     header("Location: login_file/login.php");
     exit();
 }
-
-$year = isset($_GET['year']) ? $_GET['year'] : 'Default Year';
-$subject = isset($_GET['subject']) ? $_GET['subject'] : 'Default Subject';
 
 $queryParams = $_GET;
 unset($queryParams['search']); // Remove 'search' parameter
@@ -39,7 +36,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
     <script src="https://kit.fontawesome.com/3c9d5fece1.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="yearTableStyle.css">
+    <link rel="stylesheet" href="adviserStyle.css">
 </head>
 <body>
     <!-- SIDEBAR AREA -->
@@ -53,13 +50,13 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
         </div>
         <ul class="sidebar-icons">
             <li>
-                <a href="../faculty_view/faculty.php">
+                <a href="../adviser_view/adviser.php">
                     <i class="fa-solid fa-house-chimney-user"></i>
                     <span class="nav-item">Home</span>
                 </a>
             </li>
             <li>
-                <a href="../faculty_view/subGuidance.php">
+                <a href="../adviser_view/adviser.php">
                     <i class="fa-solid fa-inbox"></i>
                     <span class="nav-item">Submissions</span>
                 </a>
@@ -84,7 +81,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
         <!-- NAVBAR -->
         <nav class="navbar">
             <div class="navbar-brand">
-                <a href="#" class="site-title">Submissions</a>
+                <a href="#" class="site-title">Home Page.</a>
             </div>
             <div class="navbar-icons">
                 <img src="/nexuse/images/lebron.jpg" alt="Profile Icon" class="icon-image">
@@ -93,12 +90,17 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
 
         <!-- HEADER -->
         <div class="user-p-cont">
-            <div class="subject-container">
-                <a class="year-level"><?php echo htmlspecialchars($year); ?></a>
-                <a class="subject-title"><?php echo htmlspecialchars($subject); ?></a>
+            <div class="user-profile">
+            <img src="/nexuse/images/lebron.jpg" alt="User Image" class="profile-image">
+            <div class="profile-info">
+                <h4 class="profile-name">LeBron James</h4>
+                <span class="profile-class">Computer Science Department Adviser</span>
             </div>
-
-            <!-- SEARCH AND FILTER FORM -->
+        </div>
+        <div class="subject-container">
+              <a class="year-level">2nd Year</a>
+                <a class="subject-title">Computer Science</a>
+                 <!-- SEARCH AND FILTER FORM -->
             <div class="filter-searching">
                 <form method="POST" class="row mb-3">
                     <div class="col-md-6">
@@ -106,9 +108,10 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                     </div>
                     <div class="col-md-3">
                         <select name="filterCourse" class="form-select">
-                            <option value="">Filter by Course</option>
-                            <option value="BSCS-2" <?php echo $filterCourse === 'BSCS-2' ? 'selected' : ''; ?>>BSCS-2</option>
-                            <option value="BSIT-2" <?php echo $filterCourse === 'BSIT-2' ? 'selected' : ''; ?>>BSIT-2</option>
+                            <option value="">Filter by Section</option>
+                            <option value="2A" <?php echo $filterCourse === '2A' ? 'selected' : ''; ?>>2A</option>
+                            <option value="2B" <?php echo $filterCourse === '2B' ? 'selected' : ''; ?>>2B</option>
+                            <option value="2C" <?php echo $filterCourse === '2C' ? 'selected' : ''; ?>>2C</option>
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -116,16 +119,19 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                         <a href="<?= htmlspecialchars($resetUrl) ?>" class="btn btn-secondary">Reset</a>
                     </div>
                 </form>
+            </div>
+
 
                 <!-- TABLE -->
-                <table class="table table-bordered">
+                <table class="table table-bordered equal-width-table">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Course and Year Level</th>
+                            <th>Section</th>
                             <th>Date of Absent</th>
                             <th>Date of Submission</th>
                             <th>Remarks</th>
+                            <th>Reason for Absence</th>
                             <th>Photo</th>
                             <th>Approval</th>
                         </tr>
@@ -135,18 +141,20 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                         $submissions = [
                             [
                                 'name' => 'Labang, Hudhaifah A.',
-                                'course' => 'BSCS-2',
+                                'section' => '2B',
                                 'date_absent' => '11-20-2024',
                                 'date_submission' => '11-21-2024',
                                 'remarks' => 'Was unwell.',
+                                'absent' => 'Travel disruption',
                                 'photo' => '/nexuse/images/WMSU-PIC.png'
                             ],
                             [
                                 'name' => 'Pacquiao, Manny',
-                                'course' => 'BSIT-2',
+                                'section' => '2A',
                                 'date_absent' => '11-24-2024',
                                 'date_submission' => '11-25-2024',
-                                'remarks' => 'Sumakit tyan ko emergency. Sori po sir next time dala na ako gamot. sori po. Sori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. so     ',
+                                'remarks' => 'Sumakit tyan ko emergency. Sori po sir next time dala na ako gamot. sori po. Sori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. so',
+                                'absent' => 'Sickness disruption',
                                 'photo' => '/nexuse/images/lebron.jpg'
                             ]
                         ];
@@ -161,7 +169,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
 
                         $filteredSubmissions = array_filter($submissions, function ($submission) use ($search, $filterSubject, $filterCourse) {
                             $matchesSearch = empty($search) || stripos($submission['name'], $search) !== false;
-                            $matchesCourse = empty($filterCourse) || $submission['course'] === $filterCourse;
+                            $matchesCourse = empty($filterCourse) || $submission['section'] === $filterCourse;
 
                             return $matchesSearch && $matchesCourse;
                         });
@@ -175,19 +183,20 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                             <?php foreach ($filteredSubmissions as $submission): ?>
                                 <tr>
                                     <td style="font-weight: 600; color: #C70039;"><?= $submission['name'] ?></td>
-                                    <td><?= $submission['course'] ?></td>
+                                    <td><?= $submission['section'] ?></td>
                                     <td><?= $submission['date_absent'] ?></td>
                                     <td><?= $submission['date_submission'] ?></td>
                                     <td class="scrollable-cell"><?= htmlspecialchars($submission['remarks']) ?></td>
+                                    <td><?= $submission['absent'] ?></td>
                                     <td>
                                         <img src="<?= $submission['photo'] ?>" alt="Photo" class="img-thumbnail photo-thumbnail" style="width:60px; cursor:pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-photo="<?= $submission['photo'] ?>">
                                     </td>
                                     <td>
                                       <div class="approvalButtons">
-                                      <button class="yesApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" data-action="approve" data-course="<?= $submission['course'] ?>" data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
+                                      <button class="yesApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" data-action="approve" data-course="<?= $submission['section'] ?>" data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
                                           <i class="fa-solid fa-check"></i>
                                       </button>
-                                      <button class="notApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" data-action="decline" data-course="<?= $submission['course'] ?>" data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
+                                      <button class="notApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" data-action="decline" data-course="<?= $submission['section'] ?>" data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
                                           <i class="fa-solid fa-x"></i>
                                       </button>
                                       </div>

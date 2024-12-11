@@ -16,8 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: student_view/homePage.php");
             exit();
         } else if ($email == 'faculty@wmsu.com' && $password == '123456') {
-            $_SESSION['user'] = 'faculty'; // Set session variable for GUIDANCE/ADVISER
+            $_SESSION['user'] = 'faculty'; // Set session variable for GUIDANCE
             header("Location: faculty_view/faculty.php"); 
+            exit();
+        } else if ($email == 'adv@wmsu.com' && $password == '123456') {
+            $_SESSION['user'] = 'adviser'; // Set session variable for ADVISER
+            header("Location: adviser_view/adviser.php"); 
             exit();
         } else if ($email == 'prof@wmsu.com' && $password == '123456') {
             $_SESSION['user'] = 'prof'; // Set session variable for PROFESSORS
