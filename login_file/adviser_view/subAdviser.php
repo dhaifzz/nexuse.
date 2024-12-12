@@ -36,7 +36,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
     <script src="https://kit.fontawesome.com/3c9d5fece1.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="adviserStyle.css">
+    <link rel="stylesheet" href="subAdviserStyle.css">
 </head>
 <body>
     <!-- SIDEBAR AREA -->
@@ -81,7 +81,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
         <!-- NAVBAR -->
         <nav class="navbar">
             <div class="navbar-brand">
-                <a href="#" class="site-title">Home Page.</a>
+                <a href="#" class="site-title">Submissions</a>
             </div>
             <div class="navbar-icons">
                 <img src="/nexuse/images/BOSS.jpg" alt="Profile Icon" class="icon-image">
@@ -90,40 +90,38 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
 
         <!-- HEADER -->
         <div class="user-p-cont">
-            <div class="user-profile">
-            <img src="/nexuse/images/BOSS.jpg" alt="User Image" class="profile-image">
-            <div class="profile-info">
-                <h4 class="profile-name">Boss Malupiton</h4>
-                <span class="profile-class">Computer Science Department Adviser</span>
-            </div>
-        </div>
         <div class="subject-container">
-              <a class="year-level">2nd Year</a>
-                <a class="subject-title">Computer Science</a>
-                 <!-- SEARCH AND FILTER FORM -->
-            <div class="filter-searching">
+                <a class="subject-title"><?php echo htmlspecialchars($subject); ?>Classes Submissions</a>
+            </div>
+        <div class="user-profile">
+        <img src="/nexuse/images/BOSS.jpg" alt="User Image" class="profile-image">
+    <div class="profile-info">
+        <h4 class="profile-name">Boss Malupiton</h4>
+        <span class="profile-class">Computer Science Department Adviser</span>
+    </div>
+</div>
+
+            <!-- SEARCH AND FILTER FORM -->
+            <!-- <div class="filter-searching">
                 <form method="POST" class="row mb-3">
                     <div class="col-md-6">
                         <input type="text" name="search" class="form-control" placeholder="Search by Name..." value="<?php echo htmlspecialchars($search); ?>">
                     </div>
                     <div class="col-md-3">
                         <select name="filterCourse" class="form-select">
-                            <option value="">Filter by Section</option>
-                            <option value="2A" <?php echo $filterCourse === '2A' ? 'selected' : ''; ?>>2A</option>
-                            <option value="2B" <?php echo $filterCourse === '2B' ? 'selected' : ''; ?>>2B</option>
-                            <option value="2C" <?php echo $filterCourse === '2C' ? 'selected' : ''; ?>>2C</option>
+                            <option value="">Filter by Course</option>
+                            <option value="BSCS-2" <?php echo $filterCourse === 'BSCS-2' ? 'selected' : ''; ?>>BSCS-2</option>
+                            <option value="BSIT-2" <?php echo $filterCourse === 'BSIT-2' ? 'selected' : ''; ?>>BSIT-2</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <button type="submit" class="btn btn-danger">Search</button>
                         <a href="<?= htmlspecialchars($resetUrl) ?>" class="btn btn-secondary">Reset</a>
                     </div>
-                </form>
-            </div>
-
+                </form> -->
 
                 <!-- TABLE -->
-                <table class="table table-bordered equal-width-table">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -150,11 +148,11 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                             ],
                             [
                                 'name' => 'Pacquiao, Manny',
-                                'section' => '2A',
+                                'section' => '2B',
                                 'date_absent' => '11-24-2024',
                                 'date_submission' => '11-25-2024',
                                 'remarks' => 'Sumakit tyan ko emergency. Sori po sir next time dala na ako gamot. sori po. Sori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. soSori po sir next time dala na ako gamot. so',
-                                'absent' => 'Sickness disruption',
+                                'absent' => 'Travel disruption',
                                 'photo' => '/nexuse/images/lebron.jpg'
                             ]
                         ];
@@ -192,17 +190,9 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                                         <img src="<?= $submission['photo'] ?>" alt="Photo" class="img-thumbnail photo-thumbnail" style="width:60px; cursor:pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-photo="<?= $submission['photo'] ?>">
                                     </td>
                                     <td>
-                                      <div class="approvalButtons">
-                                      <button class="yesApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" 
-                                           data-action="approve" data-name="<?= $submission['name'] ?>" data-course="<?= $submission['section'] ?>" 
-                                           data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
-                                           <i class="fa-solid fa-check"></i>
-                                       </button>
-                                       <button class="notApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" 
-                                           data-action="decline" data-name="<?= $submission['name'] ?>" data-course="<?= $submission['section'] ?>" 
-                                           data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
-                                           <i class="fa-solid fa-x"></i>
-                                       </button>
+                                      <div class="approvalArea">
+                                        <div class="approved">Approved</div>
+                                        <!-- <div class="disapproved">Disapproved</div> -->
                                       </div>
                                     </td>
                                 </tr>

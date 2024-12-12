@@ -47,15 +47,9 @@ if (!isset($_SESSION['user'])) {
         </a>
     </li>
     <li>
-        <a href="../admin_view/admin.php">
+        <a href="../admin_view/addAccount.php">
             <i class="fa-solid fa-users"></i>
             <span class="nav-item">Accounts</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fa-solid fa-layer-group"></i>
-            <span class="nav-item">Subjects</span>
         </a>
     </li>
     <li>

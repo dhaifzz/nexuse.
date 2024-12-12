@@ -175,7 +175,7 @@ if (!isset($_SESSION['user'])) {
                  </div>
 
                     <div class="mb-3">
-                        <label for="comment" class="form-label">Comment:</label>
+                        <label for="comment" class="form-label">Remarks:</label>
                         <textarea class="form-control" id="comment" rows="3"></textarea>
                     </div>
                     <div class="mb-3">

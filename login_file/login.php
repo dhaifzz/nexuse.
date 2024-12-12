@@ -85,7 +85,7 @@ includeGoogleFont([
         </form>
 
         <div class="links">
-            <a href="register.php" id="create_account">Create Account</a>
+            <a href="../create_account/create-account.php" id="create_account">Create Account</a>
             <a href="forgot_password/forgotPassword.php" id="forgot_password">Forget Password</a>
         </div>
     </div>

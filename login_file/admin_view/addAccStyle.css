@@ -13,9 +13,9 @@ li {
    html, body.active{
     overflow-x: hidden;
    }
-   
+
    /* Navbar styling */
-   .navbar {
+.navbar {
     position: fixed; 
     top: 0; /* Keep it at the top */ /* Ensure it stays above other content */
     padding: 0.75rem 1rem;
@@ -24,14 +24,14 @@ li {
     border-bottom: 1px solid rgb(128, 44, 44);
     z-index: 2;
     display: flex;
-   }
-   
-   .navbar .navbar-brand .site-title {
+}
+
+.navbar .navbar-brand .site-title {
     font-size: 1.2rem;
     padding-left: 90px;
     font-weight: 600;
     color: rgb(142, 33, 33);
-   }
+}
    .main {
        min-height: 100vh;
        min-width: 100%;
@@ -53,7 +53,7 @@ li {
    .sidebar.active ~ .main {
     margin-left: 160px; /* Shift content right */
     width: calc(100% - 250px); /* Adjust width */
-   }
+}
    .sidebar.active{
     width: 250px;
    }
@@ -137,10 +137,10 @@ li {
    .sidebar.active{
     opacity: 1;
    }
-   
+
    /* .sidebar li:last-child {
     margin-top: 400px; /* Adds vertical spacing above the "Logout" option */
-   
+
     .icon-image {
         width: 2.35rem; /* Adjust the size as needed */
         height: 2.35rem; /* Maintain aspect ratio or set a fixed height */
@@ -148,7 +148,7 @@ li {
         cursor: pointer; /* Optional: mimic button behavior */
         transition: transform 0.2s ease;
         border-radius: 50%; /* Make it circular */
-   
+
     }
     .navbar .navbar-icons {
         position: relative;
@@ -157,7 +157,7 @@ li {
     .icon-image:hover {
         box-shadow: 0 0 6px 2px rgba(255, 0, 0, 0.4);
     }
-   
+
    img.profile-image{
        position: relative;
    }
@@ -184,10 +184,10 @@ li {
     position: relative; /* Ensure the element is positioned */
     right: 0; 
     transition: right 0.4s ease, transform 0.4s ease;
-   }
-   .sidebar.active ~ .main .navbar .navbar-icons {
+}
+.sidebar.active ~ .main .navbar .navbar-icons {
     right: 160px; /* Adjust right spacing when the sidebar is active */
-   }
+}
    .user-icon {
        width: 32px;
        height: 32px;
@@ -198,34 +198,20 @@ li {
    .user-profile {
        display: flex;
        align-items: center;
-       background-color: #ffffff;
+       background-color: white;
        padding: 25px;
-       border: solid 0.5px #D9D9D9;
+       border: solid 0.5px;
+       border-color: #D9D9D9;
        border-radius: 5px;
-       max-width: 1330px;
+       max-width: 1180px; /* Adjust this value to control the maximum width */
        width: 100%; /* Optional: Set width to 100% to make it responsive within its container */
        height: auto;
-       margin: 30px 0 0;
-   }
-   .table {
-       border: solid 0.5px #D9D9D9;
-       border-radius: 5px;
-       border-collapse: separate;
-   }
-   .table td, .table th{
-       border: solid 0.5px #D9D9D9;
-       max-width: 100%;
-       border-radius: 5px;
-   }
-   .table th{
-       background:#b71c1c;
-       color: white;
-       text-align: center;
+       margin: 20px 0px 5px;
    }
    
    .profile-image {
-       width: 90px;
-       height: 90px;
+       width: 110px;
+       height: 110px;
        border-radius: 50%;
        object-fit: cover;
        margin-right: 15px;
@@ -237,88 +223,56 @@ li {
    }
    
    .profile-name {
-       font-size: 2rem;
+       font-size: 2.25rem;
        font-weight: bold;
-       color: rgb(0, 0, 0);
+       color: #333;
        margin: 0;
    }
    
    .profile-class {
-       font-size: 1rem;
+       font-size: 1.1rem;
        color: #A10808;
+   }
+   .subject-container {
+       max-width: 1180px; /* Adjust to control container's max width */
+       width: 100%;
+       margin: 10px auto;
+       padding: 20px;
+       display: flex;
+       flex-direction: column;  
+       align-items: center;  
+       justify-content: flex-start;  
+   }
+   
+   .subject-area {
+       display: flex;
+       align-items: center;
+       border: 1px solid lightgray;
+       max-width: 1100px; 
+       width: 100%;
+       background-color: #f5f5f5;
+       padding: 15px;
+       border-radius: 6px;
+       margin-bottom: 25px;
+       transition: background-color 0.3s;
    }
    .subject-title {
        color: #A10808;
        font-weight: 600;
-       margin: 7px;
-       font-size: 1.5rem;
+       font-size: 2.25rem;
+       text-align: center; 
+       position: relative;
+       align-self: center;
    }
-   .year-level {
-    color: #c90a0a;
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-.yesApp-button {
-    color: #05ba62;
-    border: solid 3px #05ba62;
-    border-radius: 7px;
-    padding: 5px 7px;
-    background-color: white;
-    overflow: hidden;
-    z-index: 1;
-    font-size: 1rem;
-    margin-right: 6px;
-    margin-left: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: relative;
-}
-.notApp-button {
- color: #eb0909;
- border: solid 3px #eb0909;
- border-radius: 7px;
- padding: 5px 7px;
- background-color: white;
- overflow: hidden;
- z-index: 1;
- font-size: 1rem;
- cursor: pointer;
- transition: background-color 0.3s;
- position: relative;
-}
-
-.yesApp-button:hover, .notApp-button:hover {
-    color: rgb(255, 255, 255);
-}
-.yesApp-button:before {
- transition: 0.3s all ease;
- position: absolute;
- top: 0;
- left: -100%;
- right: 100%;
- bottom: 0;
- opacity: 0;
- content: "";
- background-color: #05ba62;
-}
-.notApp-button:before {
- transition: 0.3s all ease;
- position: absolute;
- top: 0;
- left: -100%;
- right: 100%;
- bottom: 0;
- opacity: 0;
- content: "";
- background-color: #eb0909;
-}
-.yesApp-button:hover:before, .notApp-button:hover:before{
- transition: 0.3s all ease;
- left: 0;
- right: 0;
- opacity: 1;
- z-index: -1;
-}
+   .subject-title::after{
+       content: "";
+       position: absolute;
+       bottom: -2px; /* Adjust distance */
+       left: 25%; /* Center the smaller underline */
+       width: 50%; /* Adjust the width */
+       height: 3px; /* Thickness of the underline */
+       background-color: #ff1e00;
+      }
    .subject-area:hover {
        background-color: #eeeeee;
    }
@@ -328,25 +282,64 @@ li {
        color: #333;
        font-size: 1.35rem;
    }
+   
    .subject-name {
        color: #333;
        font-size: 1.35rem;
        margin-right: 8px;
-       flex-grow: 1;
+       flex-grow: 1; /* Allow .subject-name to take available space */
    }
-   .approvalArea{
-       justify-content: space-between;
+   .container.mt-4 {
+       border: 1px solid rgb(233, 227, 227);
+       border-radius: 5px;
    }
-   .approved{
+   .form-check-1{
+       color: rgb(90, 90, 90);
+       font-style: oblique;
+   }
+   .form-check{
+       display: inline-block;
+       box-sizing: border-box;
+       min-width: 210px;
+   }
+   .btn-primary{
+       margin-top: 20px;
+       float: right;
+   }
+   .addAcc {
+       color: #b71c1c;
+       border: solid 2px #b71c1c;
+       background-color: white;
+       border-radius: 8px;
+       padding: 5px 7px;
+       overflow: hidden;
+       font-size: 1rem;
+       cursor: pointer;
+       transition: background-color 0.3s;
+       position: relative;
+       z-index: 1;
+   }
+   
+   .addAcc:hover {
        color: white;
-       background-color: #05ba62;
-       margin-top: 7px;
-       border: 2px solid #0a6d3d;
-       padding: 5px;
-       border-radius: 50px;
-       font-size: 0.75rem;
-       justify-content: center;
-       text-align: center;
+   }
+   .addAcc:before{
+    transition: 0.3s all ease;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    right: 100%;
+    bottom: 0;
+    opacity: 0;
+    content: "";
+    background-color: #b71c1c;
+   }
+   .addAcc:hover:before{
+    transition: 0.3s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
    }
    .subject-area .fa-caret-right{
        font-size: 1.75rem;
@@ -355,9 +348,8 @@ li {
    .user-p-cont{
        align-items: center;
        display: flex;
-       min-width: auto;
        flex-direction: column;
-       padding-top: 80px;
+       padding-top: 90px;
    }
    .modal-header {
        background-color: #A10808;
@@ -365,73 +357,67 @@ li {
    }
    .modal-dialog{
        display: flex;
+       position: relative;
        align-items: center;
        justify-content: center;
-       height: 90vh;
-   
+       height: 100vh;
+       margin: auto;
    }
-   .subject-container a {
-        text-align: left;
-   }
-   .subject-container{
-    margin-top: 20px;
-    border: 1px solid #D9D9D9;
-    border-radius: 7px;
-    padding: 12px;
-    background-color: white;
+   #addAccountModal-1 .modal.fade.show {
+    padding-right: 0 !important;
+   }   
+   textarea{
+    resize: none;
    }
    /* Customize form inside the modal */
-   #excuseLetterModal .form-label {
+   #addAccountModal-1 .form-label {
        font-weight: bold;
        font-size: 1rem;
    }
-   #excuseLetterModal .form-control{
-       margin-bottom: 30px;
+   #addAccountModal-1 .form-control{
+       margin-bottom: 20px;
    }
-   .btn-danger{
+   #addAccountModal-1 .btn-primary {
        background-color: #C91212;
-       padding: 7px 12px;
+       padding: 10px 15px;
        font-size: 1rem;
        border: none;
        transition: background-color 0.3s;
    }
-   .btn-danger:hover {
+   #addAccountModal-1 .btn-primary:hover {
        background-color: #A10808;
    }
    .scrollable-dropdown {
     max-height: 150px; /* Limit height to enable scrolling */
     overflow-y: auto; /* Enable vertical scrolling */
-   }
-   
-   /* Customize scrollbar for WebKit browsers (Chrome, Safari, Edge) */
-   .scrollable-dropdown::-webkit-scrollbar {
+}
+
+/* Customize scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+.scrollable-dropdown::-webkit-scrollbar {
     width: 10px; /* Width of the scrollbar */
-   }
-   
-   .scrollable-dropdown::-webkit-scrollbar-thumb {
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb {
     background: #f1f1f1; /* Color of the scrollbar thumb */
     border-radius: 10px; /* Rounded corners */
-   }
-   
-   .scrollable-dropdown::-webkit-scrollbar-track {
+}
+
+.scrollable-dropdown::-webkit-scrollbar-track {
     background: #f1f1f1; /* Background of the scrollbar track */
     border-radius: 10px; /* Rounded corners */
-   }
-   
-   .scrollable-dropdown::-webkit-scrollbar-thumb:hover {
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb:hover {
     background: #8a1e1e; /* Color on hover */
-   }
-   
-   /* Firefox scrollbar styling */
-   .scrollable-dropdown {
+}
+
+/* Firefox scrollbar styling */
+.scrollable-dropdown {
     scrollbar-color: #8a1e1e #f1f1f1; /* Thumb color and track color */
     scrollbar-width: thin; 
-   }
-   .scrollable-cell {
-    max-width: 300px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-   }
+}
+
+
    .fa-circle-xmark {
        font-size: 1.5rem; 
        color: white;
@@ -445,16 +431,27 @@ li {
        color: #FF2400;
        background: none;
    }
-   tr, td{
-    font-size: 1.15rem;
-   }
-   .filter-searching{
-    margin-top: 15px;
-   }
-   td.names {
-    color: red;
+   #course option:disabled {
+    text-align: center;
    }
    .table-bordered{
-       max-width: 1300px;
-       margin-top: 15px;
+       margin-top: 20px;
+       max-width: 1050px;
+       width: 100%;
+   }
+   .table {
+       border: solid 0.5px #D9D9D9;
+       border-radius: 5px;
+       border-collapse: separate;
+   }
+   .table td, .table th{
+       border: solid 0.5px #D9D9D9;
+       border-radius: 5px;
+   }
+   .table th{
+       background:#b71c1c;
+       color: white;
+   }
+   td, th{
+       font-size: 1.15rem;
    }

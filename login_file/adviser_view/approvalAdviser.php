@@ -1,10 +1,13 @@
 <style>
     p#modal-message{    
         font-weight: bold;
-        font-size: 1.35rem;
+        font-size: 1.25rem;
         color: #b11b1b;
         text-align: center;
     } 
+    .modal-name-black {
+    color: black;
+}
 </style>
 
 <div class="modal fade" id="approvalButtons" tabindex="-1" aria-labelledby="approvalButtonsLabel" aria-hidden="true" style="display: none;">
@@ -35,14 +38,15 @@
             const dateAbsent = button.getAttribute('data-date-absent');
 
             const modalMessage = document.getElementById('modal-message');
-            modalMessage.textContent = 
-                action === 'approve' 
-                ? `Approve the letter of ${name}?` 
-                : `Decline the letter of ${name}?`;
+            modalMessage.innerHTML = `
+                ${action === 'approve' 
+                ? `Approve the letter of <span class="modal-name-black">${name}</span> ?` 
+                : `Decline the letter of <span class="modal-name-black">${name}</span> ?`}
+            `;
 
             const modalDetails = document.getElementById('modal-details');
             modalDetails.innerHTML = `
-                <p><strong>Course:</strong> ${course}</p>
+                <p><strong>Section:</strong> ${course}</p>
                 <p><strong>Date of Absence:</strong> ${dateAbsent}</p>
             `;
 

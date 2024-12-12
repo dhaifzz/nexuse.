@@ -56,7 +56,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                 </a>
             </li>
             <li>
-                <a href="../professors_view/subGuidance.php">
+                <a href="../faculty_view/subGuidance.php">
                     <i class="fa-solid fa-inbox"></i>
                     <span class="nav-item">Submissions</span>
                 </a>

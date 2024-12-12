@@ -13,9 +13,9 @@ li {
    html, body.active{
     overflow-x: hidden;
    }
-   
+
    /* Navbar styling */
-   .navbar {
+.navbar {
     position: fixed; 
     top: 0; /* Keep it at the top */ /* Ensure it stays above other content */
     padding: 0.75rem 1rem;
@@ -24,14 +24,14 @@ li {
     border-bottom: 1px solid rgb(128, 44, 44);
     z-index: 2;
     display: flex;
-   }
-   
-   .navbar .navbar-brand .site-title {
+}
+
+.navbar .navbar-brand .site-title {
     font-size: 1.2rem;
     padding-left: 90px;
     font-weight: 600;
     color: rgb(142, 33, 33);
-   }
+}
    .main {
        min-height: 100vh;
        min-width: 100%;
@@ -53,7 +53,7 @@ li {
    .sidebar.active ~ .main {
     margin-left: 160px; /* Shift content right */
     width: calc(100% - 250px); /* Adjust width */
-   }
+}
    .sidebar.active{
     width: 250px;
    }
@@ -137,10 +137,10 @@ li {
    .sidebar.active{
     opacity: 1;
    }
-   
+
    /* .sidebar li:last-child {
     margin-top: 400px; /* Adds vertical spacing above the "Logout" option */
-   
+
     .icon-image {
         width: 2.35rem; /* Adjust the size as needed */
         height: 2.35rem; /* Maintain aspect ratio or set a fixed height */
@@ -148,7 +148,7 @@ li {
         cursor: pointer; /* Optional: mimic button behavior */
         transition: transform 0.2s ease;
         border-radius: 50%; /* Make it circular */
-   
+
     }
     .navbar .navbar-icons {
         position: relative;
@@ -157,7 +157,7 @@ li {
     .icon-image:hover {
         box-shadow: 0 0 6px 2px rgba(255, 0, 0, 0.4);
     }
-   
+
    img.profile-image{
        position: relative;
    }
@@ -184,10 +184,10 @@ li {
     position: relative; /* Ensure the element is positioned */
     right: 0; 
     transition: right 0.4s ease, transform 0.4s ease;
-   }
-   .sidebar.active ~ .main .navbar .navbar-icons {
+}
+.sidebar.active ~ .main .navbar .navbar-icons {
     right: 160px; /* Adjust right spacing when the sidebar is active */
-   }
+}
    .user-icon {
        width: 32px;
        height: 32px;
@@ -198,11 +198,11 @@ li {
    .user-profile {
        display: flex;
        align-items: center;
-       background-color: #ffffff;
-       padding: 25px;
+       background-color: #a31111;
+       padding: 15px;
        border: solid 0.5px #D9D9D9;
        border-radius: 5px;
-       max-width: 1330px;
+       max-width: 1300px; /* Adjust this value to control the maximum width */
        width: 100%; /* Optional: Set width to 100% to make it responsive within its container */
        height: auto;
        margin: 30px 0 0;
@@ -214,18 +214,16 @@ li {
    }
    .table td, .table th{
        border: solid 0.5px #D9D9D9;
-       max-width: 100%;
        border-radius: 5px;
    }
    .table th{
        background:#b71c1c;
        color: white;
-       text-align: center;
    }
    
    .profile-image {
-       width: 90px;
-       height: 90px;
+       width: 80px;
+       height: 80px;
        border-radius: 50%;
        object-fit: cover;
        margin-right: 15px;
@@ -237,88 +235,24 @@ li {
    }
    
    .profile-name {
-       font-size: 2rem;
+       font-size: 1.75rem;
        font-weight: bold;
-       color: rgb(0, 0, 0);
+       color: white;
        margin: 0;
    }
    
    .profile-class {
        font-size: 1rem;
-       color: #A10808;
+       color: #e4e3e3;
    }
    .subject-title {
        color: #A10808;
        font-weight: 600;
-       margin: 7px;
-       font-size: 1.5rem;
+       font-size: 2rem;
+       text-align: center; 
+       position: relative;
+       align-self: center;
    }
-   .year-level {
-    color: #c90a0a;
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-.yesApp-button {
-    color: #05ba62;
-    border: solid 3px #05ba62;
-    border-radius: 7px;
-    padding: 5px 7px;
-    background-color: white;
-    overflow: hidden;
-    z-index: 1;
-    font-size: 1rem;
-    margin-right: 6px;
-    margin-left: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: relative;
-}
-.notApp-button {
- color: #eb0909;
- border: solid 3px #eb0909;
- border-radius: 7px;
- padding: 5px 7px;
- background-color: white;
- overflow: hidden;
- z-index: 1;
- font-size: 1rem;
- cursor: pointer;
- transition: background-color 0.3s;
- position: relative;
-}
-
-.yesApp-button:hover, .notApp-button:hover {
-    color: rgb(255, 255, 255);
-}
-.yesApp-button:before {
- transition: 0.3s all ease;
- position: absolute;
- top: 0;
- left: -100%;
- right: 100%;
- bottom: 0;
- opacity: 0;
- content: "";
- background-color: #05ba62;
-}
-.notApp-button:before {
- transition: 0.3s all ease;
- position: absolute;
- top: 0;
- left: -100%;
- right: 100%;
- bottom: 0;
- opacity: 0;
- content: "";
- background-color: #eb0909;
-}
-.yesApp-button:hover:before, .notApp-button:hover:before{
- transition: 0.3s all ease;
- left: 0;
- right: 0;
- opacity: 1;
- z-index: -1;
-}
    .subject-area:hover {
        background-color: #eeeeee;
    }
@@ -348,6 +282,17 @@ li {
        justify-content: center;
        text-align: center;
    }
+   /* .disapproved{
+    color: white;
+    background-color: #eb0909;
+    margin-top: 7px;
+    border: 2px solid #890e0e;
+    padding: 5px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    justify-content: center;
+    text-align: center;
+} */
    .subject-area .fa-caret-right{
        font-size: 1.75rem;
        margin-right: 10px;
@@ -357,7 +302,7 @@ li {
        display: flex;
        min-width: auto;
        flex-direction: column;
-       padding-top: 80px;
+       padding-top: 100px;
    }
    .modal-header {
        background-color: #A10808;
@@ -368,18 +313,17 @@ li {
        align-items: center;
        justify-content: center;
        height: 90vh;
-   
+
    }
-   .subject-container a {
-        text-align: left;
-   }
-   .subject-container{
-    margin-top: 20px;
-    border: 1px solid #D9D9D9;
-    border-radius: 7px;
-    padding: 12px;
-    background-color: white;
-   }
+   .subject-title::after{
+       content: "";
+       position: absolute;
+       bottom: -2px; /* Adjust distance */
+       left: 25%; /* Center the smaller underline */
+       width: 50%; /* Adjust the width */
+       height: 3px; /* Thickness of the underline */
+       background-color: #ff1e00;
+      }
    /* Customize form inside the modal */
    #excuseLetterModal .form-label {
        font-weight: bold;
@@ -401,37 +345,37 @@ li {
    .scrollable-dropdown {
     max-height: 150px; /* Limit height to enable scrolling */
     overflow-y: auto; /* Enable vertical scrolling */
-   }
-   
-   /* Customize scrollbar for WebKit browsers (Chrome, Safari, Edge) */
-   .scrollable-dropdown::-webkit-scrollbar {
+}
+
+/* Customize scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+.scrollable-dropdown::-webkit-scrollbar {
     width: 10px; /* Width of the scrollbar */
-   }
-   
-   .scrollable-dropdown::-webkit-scrollbar-thumb {
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb {
     background: #f1f1f1; /* Color of the scrollbar thumb */
     border-radius: 10px; /* Rounded corners */
-   }
-   
-   .scrollable-dropdown::-webkit-scrollbar-track {
+}
+
+.scrollable-dropdown::-webkit-scrollbar-track {
     background: #f1f1f1; /* Background of the scrollbar track */
     border-radius: 10px; /* Rounded corners */
-   }
-   
-   .scrollable-dropdown::-webkit-scrollbar-thumb:hover {
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb:hover {
     background: #8a1e1e; /* Color on hover */
-   }
-   
-   /* Firefox scrollbar styling */
-   .scrollable-dropdown {
+}
+
+/* Firefox scrollbar styling */
+.scrollable-dropdown {
     scrollbar-color: #8a1e1e #f1f1f1; /* Thumb color and track color */
     scrollbar-width: thin; 
-   }
-   .scrollable-cell {
+}
+.scrollable-cell {
     max-width: 300px;
     overflow-y: auto;
     white-space: pre-wrap;
-   }
+}
    .fa-circle-xmark {
        font-size: 1.5rem; 
        color: white;
@@ -448,13 +392,13 @@ li {
    tr, td{
     font-size: 1.15rem;
    }
-   .filter-searching{
-    margin-top: 15px;
-   }
+   /* .filter-searching{
+    margin-top: 20px;
+   } */
    td.names {
     color: red;
    }
    .table-bordered{
        max-width: 1300px;
-       margin-top: 15px;
+       margin-top: 12px;
    }
