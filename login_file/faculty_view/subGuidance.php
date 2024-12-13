@@ -1,6 +1,6 @@
 <?php
 include '../fonts/google_fonts.php';
-include '../professors_view/approvalButtons.php';
+include '../faculty_view/approvalGuidance.php';
 session_start();
 
 $subject = isset($_GET['subject']) ? $_GET['subject'] : null;

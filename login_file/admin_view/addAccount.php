@@ -89,7 +89,7 @@ if (!isset($_SESSION['user'])) {
                     <th>Name</th>
                     <th>School Email</th>
                     <th>COR</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -104,6 +104,7 @@ if (!isset($_SESSION['user'])) {
                     <td class="text-center">
                         <button class="addAcc" data-bs-toggle="modal" data-bs-target="#addAccountModal-1">
                             <i class="fa-solid fa-user-plus"></i>
+                            Add 
                         </button>
                     </td>
                     
@@ -135,6 +136,16 @@ if (!isset($_SESSION['user'])) {
                             </div>
 
                             <div class="mb-3">
+                                <label for="dept-1" class="form-label">Department:</label>
+                                <select id="dept-1" class="form-select" required>
+                                    <option value="" disabled selected>Select a department</option>
+                                    <option value="CS">Computer Science</option>
+                                    <option value="IT">Information Technology</option>
+                                    <option value="ACT">Associate in Computer Technology</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="role-1" class="form-label">Role:</label>
                                 <select id="role-1" class="form-select" required>
                                     <option value="" disabled selected>Select Role</option>
@@ -145,60 +156,6 @@ if (!isset($_SESSION['user'])) {
                                     <option value="Admin">Admin</option>
                                 </select>
                             </div>
-
-                            <div class="container mt-4">
-                                <strong>Select Subject:</strong>
-                                <!-- Select All Option -->
-                                <div class="form-check-1">
-                                    <input class="form-check-input" type="checkbox" id="selectAllSubjects">
-                                    <label class="form-check-label" for="selectAllSubjects">
-                                        Select All
-                                    </label>
-                                </div>
-                                <!-- Individual Subjects -->
-                                <div class="form-check">
-                                    <input class="form-check-input subject-checkbox" type="checkbox" value="HCI" id="subjectHCI">
-                                    <label class="form-check-label" for="subjectHCI">
-                                        HCI
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input subject-checkbox" type="checkbox" value="SIPP" id="subjectSIPP">
-                                    <label class="form-check-label" for="subjectSIPP">
-                                        SIPP
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input subject-checkbox" type="checkbox" value="CC101" id="subjectCC101">
-                                    <label class="form-check-label" for="subjectCC101">
-                                        CC101
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input subject-checkbox" type="checkbox" value="NC 127" id="subjectNC">
-                                    <label class="form-check-label" for="subjectNC">
-                                        NC 127
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input subject-checkbox" type="checkbox" value="DSA 1" id="subjectDSA1">
-                                    <label class="form-check-label" for="subjectDSA1">
-                                        DSA 1
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input subject-checkbox" type="checkbox" value="WD 2" id="subjectWD2">
-                                    <label class="form-check-label" for="subjectWD2">
-                                        WD 2
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input subject-checkbox" type="checkbox" value="CC103" id="subjectCC103">
-                                    <label class="form-check-label" for="subjectCC103">
-                                        CC103
-                                    </label>
-                                </div>
-                            </div>
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa-solid fa-plus"></i> Add Account
                             </button>
@@ -206,7 +163,7 @@ if (!isset($_SESSION['user'])) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
 
         <!-- COR Modal -->
         <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
@@ -300,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         schoolEmail: "dap@wmsu.edu.edu", // Replace ng dynamic data
                         password: password,
                         role: role,
-                        subjects: subjects
+                        // subjects: subjects
                     };
 
                     // Simulate saving to backend (replace with AJAX request)
@@ -312,26 +269,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
         });
-       // Select All functionality
-       const selectAllCheckbox = document.getElementById('selectAllSubjects');
-          const subjectCheckboxes = document.querySelectorAll('.subject-checkbox');
+    //    // Select All functionality
+    //    const selectAllCheckbox = document.getElementById('selectAllSubjects');
+    //       const subjectCheckboxes = document.querySelectorAll('.subject-checkbox');
       
-          // When "Select All" is clicked
-          selectAllCheckbox.addEventListener('change', function () {
-              const isChecked = selectAllCheckbox.checked;
-              subjectCheckboxes.forEach(checkbox => {
-                  checkbox.checked = isChecked;
-              });
-          });
+    //       // When "Select All" is clicked
+    //       selectAllCheckbox.addEventListener('change', function () {
+    //           const isChecked = selectAllCheckbox.checked;
+    //           subjectCheckboxes.forEach(checkbox => {
+    //               checkbox.checked = isChecked;
+    //           });
+    //       });
       
-          // When individual checkboxes are clicked
-          subjectCheckboxes.forEach(checkbox => {
-              checkbox.addEventListener('change', function () {
-                  // Check if all individual checkboxes are selected
-                  const allChecked = Array.from(subjectCheckboxes).every(cb => cb.checked);
-                  selectAllCheckbox.checked = allChecked;
-              });
-          });
+    //       // When individual checkboxes are clicked
+    //       subjectCheckboxes.forEach(checkbox => {
+    //           checkbox.addEventListener('change', function () {
+    //               // Check if all individual checkboxes are selected
+    //               const allChecked = Array.from(subjectCheckboxes).every(cb => cb.checked);
+    //               selectAllCheckbox.checked = allChecked;
+    //           });
+    //       });
     </script>
 </body>
 </html>

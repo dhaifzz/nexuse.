@@ -1,6 +1,6 @@
 <?php
 include '../fonts/google_fonts.php';
-include '../professors_view/approvalButtons.php';
+include '../faculty_view/approvalGuidance.php';
 session_start();
 
 $subject = isset($_GET['subject']) ? $_GET['subject'] : null;
@@ -183,14 +183,17 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                                         <img src="<?= $submission['photo'] ?>" alt="Photo" class="img-thumbnail photo-thumbnail" style="width:60px; cursor:pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-photo="<?= $submission['photo'] ?>">
                                     </td>
                                     <td>
-                                      <div class="approvalButtons">
-                                      <button class="yesApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" data-action="approve" data-course="<?= $submission['course'] ?>" data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
-                                          <i class="fa-solid fa-check"></i>
-                                      </button>
-                                      <button class="notApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" data-action="decline" data-course="<?= $submission['course'] ?>" data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
-                                          <i class="fa-solid fa-x"></i>
-                                      </button>
-                                      </div>
+                                    <div class="approvalButtons">
+                                      <button class="yesApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" 
+                                           data-action="approve" data-name="<?= $submission['name'] ?>" data-course="<?= $submission['course'] ?>" 
+                                           data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
+                                           <i class="fa-solid fa-check"></i>
+                                       </button>
+                                       <button class="notApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" 
+                                           data-action="decline" data-name="<?= $submission['name'] ?>" data-course="<?= $submission['course'] ?>" 
+                                           data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
+                                           <i class="fa-solid fa-x"></i>
+                                       </button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

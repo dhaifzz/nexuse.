@@ -35,6 +35,7 @@ li {
    .main {
        min-height: 100vh;
        min-width: 100%;
+       box-sizing: border-box;
        background-size: 20px 55px;
        transition: margin-left 0.4s ease;
        background-image: repeating-linear-gradient(0deg, #ffd7d7, #ffd7d7 1px, whitesmoke 1px, whitesmoke);
@@ -51,7 +52,7 @@ li {
     transition: all 0.4s ease;
    }
    .sidebar.active ~ .main {
-    margin-left: 160px; /* Shift content right */
+    margin-left: 150px; /* Shift content right */
     width: calc(100% - 250px); /* Adjust width */
 }
    .sidebar.active{

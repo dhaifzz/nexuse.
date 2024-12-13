@@ -1,13 +1,13 @@
 <style>
     p#modal-message{    
         font-weight: bold;
-        font-size: 1.25rem;
+        font-size: 1.35rem;
         color: #b11b1b;
         text-align: center;
     } 
-    .modal-name-black {
-    color: black;
-}
+    .modal-name-black{
+        color: black;
+    }
 </style>
 
 <div class="modal fade" id="approvalButtons" tabindex="-1" aria-labelledby="approvalButtonsLabel" aria-hidden="true" style="display: none;">
@@ -27,35 +27,34 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+   document.addEventListener('DOMContentLoaded', function () {
     const modal = new bootstrap.Modal(document.getElementById('approvalButtons'));
 
     document.querySelectorAll('.approvalButtons button').forEach(button => {
         button.addEventListener('click', function () {
-            const action = button.getAttribute('data-action'); // 'approve' or 'decline'
+            const action = button.getAttribute('data-action');
             const name = button.getAttribute('data-name');
-            const course = button.getAttribute('data-section');
+            const course = button.getAttribute('data-course');
             const dateAbsent = button.getAttribute('data-date-absent');
 
-            const isApprove = action === 'approve' ? 1 : 0; // 1 for approve, 0 for decline
+            const isApprove = action === 'approve' ? 1 : 0; 
 
             const modalMessage = document.getElementById('modal-message');
             modalMessage.innerHTML = `
-                ${isApprove 
-                ? `Approve the letter of <span class="modal-name-black">${name}</span>?` 
-                : `Decline the letter of <span class="modal-name-black">${name}</span>?`}
+                ${action === 'approve' 
+                ? `Approve the letter of <span class="modal-name-black">${name}</span> ?` 
+                : `Decline the letter of <span class="modal-name-black">${name}</span> ?`}
             `;
 
             const modalDetails = document.getElementById('modal-details');
             modalDetails.innerHTML = `
-                <p><strong>Section:</strong> ${course}</p>
+                <p><strong>Course:</strong> ${course}</p>
                 <p><strong>Date of Absence:</strong> ${dateAbsent}</p>
             `;
 
             const confirmButton = document.getElementById('modal-confirm');
             confirmButton.onclick = function () {
-                console.log(`${isApprove ? 'Approved' : 'Declined'} the letter of ${name}`);
-
+                console.log(`${action} the letter of ${name}`);
                 modal.hide();
             };
         });
@@ -64,4 +63,3 @@
 
 
 </script>
-

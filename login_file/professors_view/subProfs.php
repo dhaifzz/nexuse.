@@ -1,7 +1,7 @@
 <?php
-include '../fonts/google_fonts.php';
-include '../professors_view/approvalButtons.php';
 session_start();
+include '../fonts/google_fonts.php';
+include '../professors_view/approvalProfs.php';
 
 $subject = isset($_GET['subject']) ? $_GET['subject'] : null;
 $search = isset($_POST['search']) ? trim($_POST['search']) : '';
@@ -176,7 +176,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                             </tr>
                         <?php else: ?>
                             <?php foreach ($filteredSubmissions as $submission): ?>
-                                <tr>
+                                    <tr>
                                     <td style="font-weight: 600; color: #C70039;"><?= $submission['name'] ?></td>
                                     <td><?= $submission['course'] ?></td>
                                     <td><?= $submission['date_absent'] ?></td>

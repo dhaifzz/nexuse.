@@ -194,12 +194,12 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                                     <td>
                                       <div class="approvalButtons">
                                       <button class="yesApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" 
-                                           data-action="approve" data-name="<?= $submission['name'] ?>" data-course="<?= $submission['section'] ?>" 
+                                           data-action="approve" data-name="<?= $submission['name'] ?>" data-section="<?= $submission['section'] ?>" 
                                            data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
                                            <i class="fa-solid fa-check"></i>
                                        </button>
                                        <button class="notApp-button" data-bs-toggle="modal" data-bs-target="#approvalButtons" 
-                                           data-action="decline" data-name="<?= $submission['name'] ?>" data-course="<?= $submission['section'] ?>" 
+                                           data-action="decline" data-name="<?= $submission['name'] ?>" data-section="<?= $submission['section'] ?>" 
                                            data-date-absent="<?= $submission['date_absent'] ?>" data-remarks="<?= $submission['remarks'] ?>">
                                            <i class="fa-solid fa-x"></i>
                                        </button>

@@ -71,7 +71,7 @@ if (!isset($_SESSION['user'])) {
     <div class="main">
        <nav class="navbar">
         <div class="navbar-brand">
-            <a href="#" class="site-title">Admin Page.</a>
+            <a href="#" class="site-title">Dashboard</a>
         </div>
         <div class="navbar-icons">
           <img src="/nexuse/images/pacman.jpg" alt="Profile Icon" class="icon-image">

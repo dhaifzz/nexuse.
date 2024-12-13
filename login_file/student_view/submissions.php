@@ -114,6 +114,7 @@ $data = [
                     <th>Date of Submission</th>
                     <th>Remarks</th>
                     <th>Photo</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -155,6 +156,7 @@ $data = [
                                   data-bs-target='#photoModal'
                                   data-photo='{$submission['photo']}'>
                          </td>
+                         <td></td>
                          <td>
                             <div class='decision-btn'>
                              <button class='edit-button' 
