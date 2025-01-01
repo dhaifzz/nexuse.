@@ -31,7 +31,7 @@ if (!isset($_SESSION['user'])) {
 
 <body>
      <!-- SIDEBAR AREA -->
-     <div class="sidebar">
+     <div class="sidebar" class="menu">
         <div class="top">
             <div class="logo">
                 <img src="/nexuse/images/Nexuse.svg" class="cat">
@@ -40,25 +40,25 @@ if (!isset($_SESSION['user'])) {
             <i class="fa-solid fa-bars" id="sbtn"></i>
         </div>
         <ul class="sidebar-icons">
-    <li>
+    <li class="menu-item">
         <a href="../admin_view/admin.php">
             <i class="fa-solid fa-gauge-high"></i>
             <span class="nav-item">Dashboard</span>
         </a>
     </li>
-    <li>
+    <li class="menu-item">
         <a href="../admin_view/addAccount.php">
             <i class="fa-solid fa-users"></i>
             <span class="nav-item">Accounts</span>
         </a>
     </li>
-    <li>
+    <li class="menu-item">
         <a href="#">
             <i class="fa-solid fa-gear"></i>
             <span class="nav-item">Settings</span>
         </a>
     </li>
-    <li>
+    <li class="menu-item">
         <a href="../login.php">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
             <span class="nav-item">Logout</span>

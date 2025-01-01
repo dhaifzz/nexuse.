@@ -31,7 +31,7 @@ if (!isset($_SESSION['user'])) {
 
 <body>
      <!-- SIDEBAR AREA -->
-     <div class="sidebar">
+     <div class="sidebar" class="menu">
         <div class="top">
             <div class="logo">
                 <img src="/nexuse/images/Nexuse.svg" class="cat">
@@ -40,25 +40,25 @@ if (!isset($_SESSION['user'])) {
             <i class="fa-solid fa-bars" id="sbtn"></i>
         </div>
         <ul class="sidebar-icons">
-    <li>
+    <li class="menu-item">
         <a href="#">
             <i class="fa-solid fa-house-chimney-user"></i>
             <span class="nav-item">Home</span>
         </a>
     </li>
-    <li>
+    <li class="menu-item">
         <a href="../student_view/submissions.php">
             <i class="fa-solid fa-inbox"></i>
             <span class="nav-item">Submissions</span>
         </a>
     </li>
-    <li>
+    <li class="menu-item">
         <a href="#">
             <i class="fa-solid fa-gear"></i>
             <span class="nav-item">Settings</span>
         </a>
     </li>
-    <li>
+    <li class="menu-item">
         <a href="../login.php">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
             <span class="nav-item">Logout</span>
@@ -80,9 +80,9 @@ if (!isset($_SESSION['user'])) {
 
      <!-- MAIN/LAMAN NG CONTAINER -->
      <div class="user-p-cont"> 
-              <div class="user-profile">
+        <div class="user-profile">
     <img src="/nexuse/images/pacman.jpg" alt="User Image" class="profile-image">
-    <div class="profile-info">
+        <div class="profile-info">
         <h4 class="profile-name">Manny Pacquiao</h4>
         <span class="profile-class">CS Student</span>
     </div>
@@ -127,6 +127,7 @@ if (!isset($_SESSION['user'])) {
            </div>
         </div>
     </div>
+
  <!-- Excuse Letter -->
  <div class="modal fade" id="excuseLetterModal" tabindex="-1" aria-labelledby="excuseLetterModalLabel">
     <div class="modal-dialog">
@@ -205,6 +206,7 @@ if (!isset($_SESSION['user'])) {
      sidebar.classList.toggle("active");
     });
 
+
     // button sa letter
     document.querySelectorAll('.letter-button').forEach(button => {
     button.addEventListener('click', (event) => {
@@ -216,6 +218,11 @@ if (!isset($_SESSION['user'])) {
         const excuseLetterModal = new bootstrap.Modal(document.getElementById('excuseLetterModal'));
         excuseLetterModal.show();
     });
+});
+
+document.addEventListener('show.bs.modal', function (event) {
+    const modalElement = event.target; // Get the modal being shown
+    modalElement.style.paddingRight = '0px'; // Remove the padding
 });
 
     </script>

@@ -1,3 +1,6 @@
+  *{
+    box-sizing: border-box;
+  } 
    li {
        list-style: none;
    }
@@ -10,11 +13,20 @@
     font-family: "Poppins", sans-serif;
     scrollbar-color: #ffffff #8a1e1e;
    }
+   
    html, body.active{
     overflow-x: hidden;
    }
-
-   /* Navbar styling */
+   .modal-backdrop {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+}
+.modal {
+    padding-right: 0 !important;
+}
 .navbar {
     position: fixed; 
     top: 0; /* Keep it at the top */ /* Ensure it stays above other content */
@@ -35,6 +47,7 @@
    .main {
        min-height: 100vh;
        min-width: 100%;
+       position: absolute;
        background-size: 20px 55px;
        transition: margin-left 0.4s ease;
        background-image: repeating-linear-gradient(0deg, #ffd7d7, #ffd7d7 1px, whitesmoke 1px, whitesmoke);
@@ -42,13 +55,14 @@
    .sidebar{
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0; 
     height: 100vh;
     width: 90px;
     z-index: 4;
     background: radial-gradient(circle at 10% 20%, rgb(161, 8, 8, 1) 0%, rgb(83, 15, 15) 90%);
     padding: .4rem .8rem;
     transition: all 0.4s ease;
+    height: 100%;
    }
    .sidebar.active ~ .main {
     margin-left: 160px; /* Shift content right */
@@ -115,6 +129,10 @@
     align-items: center;
     text-decoration: none;
     border-radius: 0.7rem;
+   }
+   .menu-item a.active{
+    color: #b71c1c;
+    background-color: white;
    }
    .sidebar li a:hover{
     background-color: white;
@@ -341,10 +359,12 @@
        justify-content: center;
        height: 100vh;
        margin: auto;
+       overflow-y: auto;
    }
-   #excuseLetterModal .modal.fade.show {
-    padding-right: 0 !important;
-   }   
+   .modal-content{
+    max-height: 100%; 
+    overflow-y: auto; 
+   } 
    textarea{
     resize: none;
    }
@@ -413,3 +433,205 @@
    #course option:disabled {
     text-align: center;
    }
+
+
+/* LAPTOP (1024px) */
+   @media (max-width: 1024px) {
+    .sidebar.active {
+        width: 180px;
+    }
+    .main {
+        margin-left: 80px; 
+        width: calc(100% - 120px);
+        padding: 0;
+    }
+    .navbar{
+        max-width: 100vw;
+    }
+    .logo{
+        margin-left: -5%;
+    }
+    img.cat{
+        height: 35px;
+    }
+    .text-cat{
+        font-size: 20px;
+    }
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+    .profile-info h3 {
+        font-size: 18px;
+    }
+    .profile-info p {
+        font-size: 14px;
+    }
+    .subject-container {
+        grid-template-columns: 1fr; /* Single column for better readability */
+        gap: 10px;
+    }
+    .subject-area {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .letter-button {
+        font-size: 17px;
+        padding: 8px 12px;
+    }
+    .pending-badge {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+    .modal-header {
+        font-size: 16px;
+        padding: 10px;
+    }
+    .navbar .navbar-brand .site-title {
+        padding-left: 15px;
+    }
+    .sidebar.active ~ .main .navbar .navbar-icons {
+        right: 10px; 
+    }
+}
+
+
+/* TABLET */
+   @media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+        height: 100%;
+    }
+    .navbar{
+        max-width: 100vw;
+    }
+    .sidebar.active {
+        width: 180px;
+    }
+    .sidebar.active ~ .main {
+        margin-left: 100px; /* Shift content right */
+        width: calc(100% - 250px); /* Adjust width */
+    }
+    .sidebar li a {
+        font-size: 0.9rem;
+    }
+    .logo{
+        margin-left: -10%;
+    }
+    img.cat{
+        height: 50px;
+    }
+    .text-cat{
+        font-size: 18px;
+    }
+    li.menu-item i {
+        margin-left: -35%;
+    }
+    .sidebar #sbtn {
+        font-size: 1rem;
+    }
+    .main {
+        margin-left: 60px;
+    }
+    .sidebar.active ~ .main {
+        margin-left: 170px;
+    }
+    .sidebar.active ~ .main .navbar .navbar-icons {
+        right: 10px; 
+    }
+    .navbar .navbar-brand .site-title {
+        padding-left: 5px;
+        font-size: 1rem;
+    }
+    .modal-dialog {
+        max-width: 768px; /* Adjust for smaller screens */
+    }
+    .modal-content {
+        max-height: 490px; /* Slightly reduce height */
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 50px;
+    }
+    .sidebar.active {
+        width: 150px;
+    }
+    .sidebar li a {
+        font-size: 0.8rem;
+    }
+    .sidebar-icons{
+        font-size: 0.8rem;
+        padding: 0;
+    }
+    .sidebar #sbtn {
+        font-size: 0.9rem;
+    }
+    li.menu-item i {
+        font-size: 15px;
+        margin-left: -80%;
+    }
+    li.menu-item .nav-item{
+        font-size: 15px;
+        margin-left: 30%;
+    }
+    .main { 
+        margin-left: 50px;
+    }
+    .subject-code, .subject-name{
+        font-size: 18px;
+    }
+    .subject-area{
+        display:inline;
+    }
+    .subject-code{
+        font-weight: 600;
+    }
+    .subject-area .fa-caret-right{
+        font-size: 20px;
+    }
+    .navbar .navbar-brand .site-title {
+        font-size: 1rem;
+    }
+    .logo{
+        margin-left: -15%;
+    }
+    img.cat{
+        height: 30px;
+    }
+    .text-cat{
+        font-size: 15px;
+    }
+    .profile-info .profile-name {
+        font-size: 1.25rem;
+    }
+    .profile-info .profile-class {
+        font-size: 0.9rem;
+    }
+    .subject-container {
+        padding: 10px;
+    }
+    .user-profile{
+        padding: 17px;
+    }
+    .profile-image{
+        height: 80px;
+        width: 80px;
+    }
+    .letter-button {
+        font-size: 14px;
+        padding: 7px;
+        margin-top: 5px;
+    }
+    .subject-title{
+        font-size: 18px;
+    }
+    .fa-caret-right, .subject-code{
+        display: flex;
+    }
+    .sidebar.active ~ .main .navbar .navbar-icons {
+        right: 5px; 
+    }
+}

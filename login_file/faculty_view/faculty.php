@@ -29,7 +29,7 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 <body>
-<div class="sidebar">
+<div class="sidebar" class="menu">
     <div class="top">
         <div class="logo">
             <img src="/nexuse/images/Nexuse.svg" class="cat">
@@ -38,25 +38,25 @@ if (!isset($_SESSION['user'])) {
         <i class="fa-solid fa-bars" id="sbtn"></i>
     </div>
     <ul class="sidebar-icons">
-        <li>
+        <li class="menu-item">
             <a href="#">
                 <i class="fa-solid fa-house-chimney-user"></i>
                 <span class="nav-item">Home</span>
             </a>
-        </li>
-        <li>
+        </li class="menu-item">
+        <li class="menu-item">
             <a href="../faculty_view/subGuidance.php">
                 <i class="fa-solid fa-inbox"></i>
                 <span class="nav-item">Submissions</span>
             </a>
         </li>
-        <li>
+        <li class="menu-item">
             <a href="#">
                 <i class="fa-solid fa-gear"></i>
                 <span class="nav-item">Settings</span>
             </a>
         </li>
-        <li>
+        <li class="menu-item">
             <a href="../login.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 <span class="nav-item">Logout</span>

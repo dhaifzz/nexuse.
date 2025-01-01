@@ -14,7 +14,7 @@ $data = [
         'date_absent' => '2024-11-20',
         'date_submission' => '2024-11-25',
         'remarks' => 'Missed due to illness',
-        'photo' => 'photo1.jpg' // Assuming photos ay stored in the 'images' folder
+        'photo' => 'photo1.jpg' 
     ],
     [
         'course_year' => 'BSIT-3',
@@ -25,7 +25,6 @@ $data = [
         'photo' => 'photo2.jpg'
     ]
 ];
-
 ?>
 
 <!DOCTYPE html>
@@ -49,8 +48,8 @@ $data = [
 
 </head>
 <body>
-       <!-- SIDEBAR AREA -->
-     <div class="sidebar">
+    <!-- SIDEBAR AREA -->
+    <div class="sidebar menu">
         <div class="top">
             <div class="logo">
                 <img src="/nexuse/images/Nexuse.svg" class="cat">
@@ -59,131 +58,135 @@ $data = [
             <i class="fa-solid fa-bars" id="sbtn"></i>
         </div>
         <ul class="sidebar-icons">
-    <li>
-        <a href="../student_view/homePage.php">
-            <i class="fa-solid fa-house-chimney-user"></i>
-            <span class="nav-item">Home</span>
-        </a>
-    </li>
-    <li>
-        <a href="../student_view/submissions.php">
-            <i class="fa-solid fa-inbox"></i>
-            <span class="nav-item">Submissions</span>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fa-solid fa-gear"></i>
-            <span class="nav-item">Settings</span>
-        </a>
-    </li>
-    <li>
-        <a href="../login.php">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span class="nav-item">Logout</span>
-        </a>
-    </li>
-</ul>
+            <li class="menu-item">
+                <a href="../student_view/homePage.php">
+                    <i class="fa-solid fa-house-chimney-user"></i>
+                    <span class="nav-item">Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="../student_view/submissions.php">
+                    <i class="fa-solid fa-inbox"></i>
+                    <span class="nav-item">Submissions</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="nav-item">Settings</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="../login.php">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="#" class="site-title">Submissions</a>
+            </div>
+            <div class="navbar-icons">
+                <img src="/nexuse/images/pacman.jpg" alt="Profile Icon" class="icon-image">
+            </div>
+        </nav>
+
+        <div class="user-p-cont">
+            <div class="user-profile">
+                <img src="/nexuse/images/pacman.jpg" alt="User Image" class="profile-image">
+                <div class="profile-info">
+                    <h4 class="profile-name">Manny Pacquiao</h4>
+                    <span class="profile-class">Student</span>
+                </div>
+            </div>
+
+            <div class="container mt-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Course and Year Level</th>
+                            <th>Date of Absent</th>
+                            <th>Date of Submission</th>
+                            <th>Remarks</th>
+                            <th>Photo</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $submissions = [
+                            [
+                                'subject' => 'MAD',
+                                'course' => 'BSCS-2',
+                                'date_absent' => '11-20-2024',
+                                'date_submission' => '11-21-2024',
+                                'remarks' => 'Was unwell.',
+                                'photo' => '/nexuse/images/WMSU-PIC.png'
+                            ],
+                            [
+                                'subject' => 'CC104',
+                                'course' => 'BSIT-2',
+                                'date_absent' => '11-19-2024',
+                                'date_submission' => '11-20-2024',
+                                'remarks' => 'Family emergency.',
+                                'photo' => '/nexuse/images/lebron.jpg'
+                            ]
+                        ];
+
+                        foreach ($submissions as $submission) {
+                            echo "<tr>
+                                <td style='font-weight: bold; color: #C70039;'>{$submission['subject']}</td>
+                                <td>{$submission['course']}</td>
+                                <td>{$submission['date_absent']}</td>
+                                <td>{$submission['date_submission']}</td>
+                                <td style='max-width: 300px;'>{$submission['remarks']}</td>
+                                <td>
+                                    <img src='{$submission['photo']}'
+                                         alt='Photo'
+                                         class='img-thumbnail photo-thumbnail'
+                                         style='width:60px; cursor:pointer;'
+                                         data-bs-toggle='modal'
+                                         data-bs-target='#photoModal'
+                                         data-photo='{$submission['photo']}'>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class='decision-btn'>
+                                        <button class='edit-button' 
+                                                data-bs-toggle='modal' 
+                                                data-bs-target='#excuseLetterModal' 
+                                                data-course='{$submission['course']}' 
+                                                data-date-absent='{$submission['date_absent']}' 
+                                                data-remarks='{$submission['remarks']}'>
+                                            <i class='fa-regular fa-pen-to-square'></i>
+                                        </button>
+                                        <button class='delete-button' 
+                                                data-bs-toggle='modal' 
+                                                data-bs-target='#deleteModal' 
+                                                data-course='{$submission['course']}' 
+                                                data-date-absent='{$submission['date_absent']}' 
+                                                data-remarks='{$submission['remarks']}'>
+                                            <i class='fa-regular fa-trash-can'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- NAVBAR TO -->
-<div class="main">
-       <nav class="navbar">
-        <div class="navbar-brand">
-            <a href="#" class="site-title">Submissions</a>
-        </div>
-        <div class="navbar-icons">
-          <img src="/nexuse/images/pacman.jpg" alt="Profile Icon" class="icon-image">
-        </div>
-</nav>
-<div class="user-p-cont"> 
-              <div class="user-profile">
-    <img src="/nexuse/images/pacman.jpg" alt="User Image" class="profile-image">
-    <div class="profile-info">
-        <h4 class="profile-name">Manny Pacquiao</h4>
-        <span class="profile-class">Student</span>
-    </div>
-  </div>
 
-<div class="container mt-4">
-    <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Subject</th> 
-                    <th>Course and Year Level</th>
-                    <th>Date of Absent</th>
-                    <th>Date of Submission</th>
-                    <th>Remarks</th>
-                    <th>Photo</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-               $submissions = [
-                   [
-                       'subject' => 'MAD',
-                       'course' => 'BSCS-2',
-                       'date_absent' => '11-20-2024',
-                       'date_submission' => '11-21-2024',
-                       'remarks' => 'Was unwell.',
-                       'photo' => '/nexuse/images/WMSU-PIC.png'
-                   ],
-                   [
-                       'subject' => 'CC104',
-                       'course' => 'BSIT-2',
-                       'date_absent' => '11-19-2024',
-                       'date_submission' => '11-20-2024',
-                       'remarks' => 'Family emergency.',
-                       'photo' => '/nexuse/images/lebron.jpg'
-                   ]
-               ];
-
-                 foreach ($submissions as $submission) {
-                     echo "<tr>
-                         <td style='font-weight: bold; color: #C70039;'>{$submission['subject']}</td>
-                         <td>{$submission['course']}</td>
-                         <td>{$submission['date_absent']}</td>
-                         <td>{$submission['date_submission']}</td>
-                         <td style='max-width: 300px;'>{$submission['remarks']}</td>
-
-                         <td>
-                             <img src='{$submission['photo']}'
-                                  alt='Photo'
-                                  class='img-thumbnail photo-thumbnail'
-                                  style='width:60px; cursor:pointer;'
-                                  data-bs-toggle='modal'
-                                  data-bs-target='#photoModal'
-                                  data-photo='{$submission['photo']}'>
-                         </td>
-                         <td></td>
-                         <td>
-                            <div class='decision-btn'>
-                             <button class='edit-button' 
-                                     data-bs-toggle='modal' 
-                                     data-bs-target='#excuseLetterModal' 
-                                     data-course='{$submission['course']}' 
-                                     data-date-absent='{$submission['date_absent']}' 
-                                     data-remarks='{$submission['remarks']}'>
-                                 <i class='fa-regular fa-pen-to-square'></i>
-                             </button>
-                             <button class='delete-button' 
-                                     data-bs-toggle='modal' 
-                                     data-bs-target='#deleteModal' 
-                                     data-course='{$submission['course']}' 
-                                     data-date-absent='{$submission['date_absent']}' 
-                                     data-remarks='{$submission['remarks']}'>
-                                 <i class='fa-regular fa-trash-can'></i>
-                             </button>
-                             </div>
-                         </td>
-                     </tr>";
-                 }
-                 ?>
-            </tbody>
-        </table>
-      </div> 
-    </div>
   <!-- Edit Modal -->
   <div class="modal fade" id="excuseLetterModal" tabindex="-1" aria-labelledby="excuseLetterModalLabel">
     <div class="modal-dialog">
@@ -238,7 +241,6 @@ $data = [
             </div>
         </div>
     </div>
-</div>
 
 <!-- Pop up yung pic -->
 <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
@@ -397,7 +399,12 @@ $data = [
         });
     });
 
+    document.addEventListener('show.bs.modal', function (event) {
+    const modalElement = event.target; // Get the modal being shown
+    modalElement.style.paddingRight = '0px'; // Remove the padding
+});
 
     </script>
+
 </body>
 </html>

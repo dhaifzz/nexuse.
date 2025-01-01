@@ -43,7 +43,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
 </head>
 <body>
     <!-- SIDEBAR AREA -->
-    <div class="sidebar">
+    <div class="sidebar" class="menu">
         <div class="top">
             <div class="logo">
                 <img src="/nexuse/images/Nexuse.svg" class="cat">
@@ -52,25 +52,25 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
             <i class="fa-solid fa-bars" id="sbtn"></i>
         </div>
         <ul class="sidebar-icons">
-            <li>
+            <li class="menu-item">
                 <a href="../faculty_view/faculty.php">
                     <i class="fa-solid fa-house-chimney-user"></i>
                     <span class="nav-item">Home</span>
                 </a>
             </li>
-            <li>
+            <li class="menu-item">
                 <a href="../faculty_view/subGuidance.php">
                     <i class="fa-solid fa-inbox"></i>
                     <span class="nav-item">Submissions</span>
                 </a>
             </li>
-            <li>
+            <li class="menu-item">
                 <a href="#">
                     <i class="fa-solid fa-gear"></i>
                     <span class="nav-item">Settings</span>
                 </a>
             </li>
-            <li>
+            <li class="menu-item">
                 <a href="../login.php">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <span class="nav-item">Logout</span>
@@ -93,12 +93,11 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
 
         <!-- HEADER -->
         <div class="user-p-cont">
-            <div class="subject-container">
                 <a class="year-level"><?php echo htmlspecialchars($year); ?></a>
                 <a class="subject-title"><?php echo htmlspecialchars($subject); ?></a>
-            </div>
-
+        </div>
             <!-- SEARCH AND FILTER FORM -->
+        <div class="subject-container">
             <div class="filter-searching">
                 <form method="POST" class="row mb-3">
                     <div class="col-md-6">
@@ -118,6 +117,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
                 </form>
 
                 <!-- TABLE -->
+                <div class="container mt-4">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -203,6 +203,7 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
             </div>
         </div>
     </div>
+</div>
 
     <!-- PHOTO MODAL -->
     <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
@@ -242,6 +243,10 @@ $resetUrl = $_SERVER['PHP_SELF'] . '?' . http_build_query($queryParams);
         });
     });
 
+    document.addEventListener('show.bs.modal', function (event) {
+    const modalElement = event.target; // Get the modal being shown
+    modalElement.style.paddingRight = '0px'; // Remove the padding
+});
 
     </script>
 </body>
